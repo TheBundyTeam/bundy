@@ -1,0 +1,64 @@
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <nav class="green accent-4" style="padding: 0 28px;">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Bundy</a>
+      <a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Sign In/Sign Out</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-sidenav">
+        <div class="card-panel green darken-1" style="padding-left: 20px; margin: 0;">
+          <li><h4 class="white-text">Bundy</h4></li>
+          <li><h6 class="white-text" style="line-height: 0;">Your Smart Budgetting Tool</h6></li>
+        </div>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Sign In/Sign Out</a></li>
+      </ul>
+    </div>
+  </nav>
+  <footer class="green accent-4 page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Fundy</h5>
+          <h6 class="grey-text text-lighten-4">The smart budgetting system that with you.<br>Brought to you by 4 sleep deprived university students.</h6>
+        </div>
+        <div class="col l3 offset-l1 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="#">About</a></li>
+            <li><a class="grey-text text-lighten-3" href="#">Contact</a></li>
+            <li><a class="grey-text text-lighten-3" href="#">Sign In/Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="green darken-1 footer-copyright">
+      <div class="container">
+      © 2017 Copyright
+      <a class="grey-text text-lighten-4 right" href="http://thacks.tech/">THacks II</a>
+      </div>
+    </div>
+  </footer>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".button-collapse").sideNav();
+    $(".modal").modal();
+  });
+</script>
+</html>
