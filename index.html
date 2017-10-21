@@ -17,21 +17,21 @@
           <li><a href="#">Contact</a></li>
           <li><a href="#">Sign In/Sign Out</a></li>
         </ul>
-        <ul class="side-nav" id="mobile-sidenav">
-          <div class="card-panel green darken-1" style="padding-left: 20px; margin: 0;">
-            <li><h4 class="white-text">Bundy</h4></li>
-            <li><h6 class="white-text" style="line-height: 0;">Your Smart Budgetting Tool</h6></li>
-          </div>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Sign In/Sign Out</a></li>
-        </ul>
       </div>
     </nav>
   </div>
+  <ul class="side-nav" id="mobile-sidenav">
+    <div class="card-panel green darken-1" style="padding-left: 20px; margin: 0;">
+      <li><h4 class="white-text">Bundy</h4></li>
+      <li><h6 class="white-text" style="line-height: 0;">Your Smart Budgetting Tool</h6></li>
+    </div>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">Sign In/Sign Out</a></li>
+  </ul>
 
-  <header class="row blue-grey darken-3" style="height: 540px;">
+  <header class="row" style="height: 580px; background-image: url('src/back.jpg'); background-size: cover; background-position: center;">
     <div class="valign-wrapper" style="height: 100%;">
       <div class="col-12" style="width: 100%;">
         <h1 class="center-align white-text" style="margin-bottom: 0; font-weight: bold;">Bundy</h1>
@@ -45,28 +45,26 @@
   </div>
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer">
+  <div id="modal1" class="modal modal-fixed-footer" style="max-width: 700px; max-height: 400px;">
     <div class="modal-content">
+      <div class="row" style="padding-top: 20px;">
+        <div class="col s12 m6 offset-m3">
+          <!-- Modal Heading -->
+          <h4 class="center-align">Register your Bundy account!</h4>
 
-      <!-- Modal Heading -->
-      <h4>Register your Bundy Account!</h4>
+          <!-- Email Field -->
+          <div class="input-field center-align">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
 
-      <!-- Email Field -->
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
+          <!-- Passsword Field -->
+          <div class="input-field center-align">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
         </div>
       </div>
-
-      <!-- Passsword Field -->
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-
     </div>
 
     <!-- Modal Footer -->
