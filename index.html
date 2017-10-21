@@ -2,31 +2,80 @@
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+  <link rel="stylesheet" href="main.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-  <nav class="green accent-4" style="padding: 0 28px;">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Bundy</a>
-      <a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Sign In/Sign Out</a></li>
-      </ul>
-      <ul class="side-nav" id="mobile-sidenav">
-        <div class="card-panel green darken-1" style="padding-left: 20px; margin: 0;">
-          <li><h4 class="white-text">Bundy</h4></li>
-          <li><h6 class="white-text" style="line-height: 0;">Your Smart Budgetting Tool</h6></li>
-        </div>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Sign In/Sign Out</a></li>
-      </ul>
+  <div class="navbar-fixed">
+    <nav class="green accent-4" style="padding: 0 28px;">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Bundy</a>
+        <a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Sign In/Sign Out</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-sidenav">
+          <div class="card-panel green darken-1" style="padding-left: 20px; margin: 0;">
+            <li><h4 class="white-text">Bundy</h4></li>
+            <li><h6 class="white-text" style="line-height: 0;">Your Smart Budgetting Tool</h6></li>
+          </div>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Sign In/Sign Out</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <header class="row" style="height: 500px; background-image: url('src/back.png');">
+    <div class="col-12 center-align" style="display: flex; flex-direction: column; jusitfy-content: center;">
+      <h2 style="margin-bottom: 0; font-weight: bold;">Bundy</h2>
+      <h4 style="margin-top: 0;">Your Smart Budgetting Companion</h4>
     </div>
-  </nav>
+  </header>
+
+  <div class="container">
+  </div>
+
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-blue btn modal-trigger center-align" href="#modal1">Sign Up</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+
+      <!-- Modal Heading -->
+      <h4>Register your Bundy Account!</h4>
+
+      <!-- Email Field -->
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+
+      <!-- Passsword Field -->
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+      <a href="javascript:clearFields()" class="modal-action waves-effect waves-green btn-flat">Sign Up</a>
+      <a href="javascript:clearFields()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+    </div>
+  </div>
+
   <footer class="green accent-4 page-footer">
     <div class="container">
       <div class="row">
@@ -60,5 +109,10 @@
     $(".button-collapse").sideNav();
     $(".modal").modal();
   });
+
+  function clearFields() {
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+  }
 </script>
 </html>
