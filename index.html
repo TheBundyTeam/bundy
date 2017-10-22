@@ -2,7 +2,6 @@
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
-  <link rel="stylesheet" href="main.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
@@ -42,35 +41,22 @@
   </header>
 
   <div class="container">
-  </div>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer" style="max-width: 700px; max-height: 400px;">
-    <div class="modal-content">
-      <div class="row" style="padding-top: 20px;">
-        <div class="col s12 m6 offset-m3">
-          <!-- Modal Heading -->
-          <h4 class="center-align">Register your Bundy account!</h4>
-
-          <!-- Email Field -->
-          <div class="input-field center-align">
-            <input id="email" type="email" class="validate">
-            <label for="email">Email</label>
-          </div>
-
-          <!-- Passsword Field -->
-          <div class="input-field center-align">
-            <input id="password" type="password" class="validate">
-            <label for="password">Password</label>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col s12 m4">
+        <h4 class="center-align" style="padding-bottom: 4px;">Tracking</h4>
+        <div class="center-align"><img src="src/track.svg" width="60%"></div>
+        <p class="center-align" style="font-size: 20px;">Easy and quicky to setup with our intuitive system and we'll do the rest!</p>
       </div>
-    </div>
-
-    <!-- Modal Footer -->
-    <div class="modal-footer">
-      <a href="javascript:clearFields()" class="modal-action waves-effect waves-green btn-flat">Sign Up</a>
-      <a href="javascript:clearFields()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+      <div class="col s12 m4">
+        <h4 class="center-align" style="padding-bottom: 4px;">Reviewing</h4>
+        <div class="center-align"><img src="src/review.svg" width="60%"></div>
+        <p class="center-align" style="font-size: 20px;">Everything from monthly spendings to overall savings with our dashboard</p>
+      </div>
+      <div class="col s12 m4">
+        <h4 class="center-align" style="padding-bottom: 4px;">Evolving</h4>
+        <div class="center-align"><img src="src/evolve.svg" width="60%"></div>
+        <p class="center-align" style="font-size: 20px;">More than a tool, changing your budget to fit your trends and spendings</p>
+      </div>
     </div>
   </div>
 
@@ -79,7 +65,7 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Fundy</h5>
-          <h6 class="grey-text text-lighten-4">The smart budgetting system that with you.<br>Brought to you by 4 sleep deprived university students.</h6>
+          <h6 class="grey-text text-lighten-4">The smart budgeting system that work with you.<br>Brought to you by 4 sleep deprived university students.</h6>
         </div>
         <div class="col l3 offset-l1 s12">
           <h5 class="white-text">Links</h5>
@@ -99,6 +85,40 @@
       </div>
     </div>
   </footer>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer" style="max-width: 700px; max-height: 440px;">
+    <div class="modal-content">
+      <div class="row" style="padding-top: 20px;">
+        <div class="col s12 m6 offset-m3">
+          <!-- Modal Heading -->
+          <h4 class="center-align">Sign In to your Bundy account!</h4>
+
+          <!-- Email Field -->
+          <div class="input-field center-align">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+
+          <!-- Passsword Field -->
+          <div class="input-field center-align">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+
+          <p class="center-align" style="font-size: 11px;">Not registered? Click "Sign Up" to join us today!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+      <a href="javascript:clearFields()" class="modal-action waves-effect waves-green btn-flat">Sign Up</a>
+      <a href="javascript:clearFields()" class="modal-action waves-effect waves-green btn-flat">Sign In</a>
+      <a href="javascript:clearFields()" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+  </div>
+
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
