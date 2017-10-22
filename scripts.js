@@ -42,6 +42,7 @@ function signinBundy() {
       // Toast indicating sign-in was successful
       Materialize.toast("You have been successfully signed in!", 4000);
       $('#modal1').modal('close');
+      location.replace("dashboard.html")
 
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
@@ -58,6 +59,7 @@ function logoutBundy(){
   // Attempts to sign-out
   firebase.auth().signOut().then(function() {
   // Executes when Sign-out successful.
+  location.replace("index.html")
   }).catch(function(error) {
   // Error Handling
   });
