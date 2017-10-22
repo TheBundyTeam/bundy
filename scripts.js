@@ -87,8 +87,6 @@ function signinBundy() {
 
 }
 
-
-
 // Logout Function
 function logoutBundy(){
   // Attempts to sign-out
@@ -113,9 +111,7 @@ $(document).ready(function () {
 
 
 // Read Database
-
 function readData(){
   var user = firebase.auth().currentUser;
   var userData = firebase.database().ref('users/' + user.uid);
-
 }
