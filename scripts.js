@@ -37,7 +37,7 @@ function signupBundy(){
       total_budget: 0,
       total_expenses: 0
     });
-    console.log("uid", user.uid);
+    console.log("UID:", user.uid);
   }, function(error) {
     // Stores the error message in variable errorMessage
     var errorMessage = error.message;
@@ -55,12 +55,15 @@ function signinBundy() {
 
   // Firebase Authentication Signin
   firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(function() {
+    .then(function(user) {
       // Toast indicating sign-in was successful
       Materialize.toast("You have been successfully signed in!", 4000);
       $('#modal1').modal('close');
       location.replace("dashboard.html")
       clearFields();
+      // get user UID upon successful login
+      console.log("Login UID:", user.uid);
+
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
       var errorMessage = error.message;
