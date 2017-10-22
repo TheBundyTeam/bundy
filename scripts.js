@@ -92,16 +92,18 @@ $(document).ready(function () {
   $(".button-collapse").sideNav();
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
+  $('.scrollspy').scrollSpy();
 });
 
 
 // Read Database
 
 function readData(){
-  var leadsRef = database.ref('users');
+  var leadsRef = firebase.database().ref('users');
   leadsRef.on('value', function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var childData = childSnapshot.val();
+        console.log(childData)
       });
   });
 }
