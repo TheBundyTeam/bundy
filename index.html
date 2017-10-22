@@ -170,6 +170,53 @@
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-database.js"></script>
+<<<<<<< HEAD
+
+<script>
+  // initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC9DkdsLY2SA6j3McDKkAPdTIcVVjUR8X8",
+    authDomain: "thebundyteam.firebaseapp.com",
+    databaseURL: "https://thebundyteam.firebaseio.com",
+    projectId: "thebundyteam",
+    storageBucket: "thebundyteam.appspot.com",
+    messagingSenderId: "608738133731"
+  };
+  firebase.initializeApp(config);
+  // sign up new user account
+  function signupBundy() {
+    var email = getElementById("email").val();
+    var password = getElementById("password").val();
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+  }
+  // sign in existing user
+  function signinBundy() {
+    var email = getElementById("email").val();
+    var password = getElementById("password").val();
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+  }
+  // change state once user is signed in/out
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) { // user is signed in
+      var email = getElementById("email").val();
+      firebase.database().ref('users/' + user.uid).set({
+        email: email
+      });
+    } else { // no user is signed in
+    }
+  });
+
+</script>
+
+<!-- Import scripts.js -->
+=======
+>>>>>>> 352495c3a3fcecfeabdfd31f06e9ed1cbae428fb
 <script type="text/javascript" src="scripts.js"></script>
 
 </html>

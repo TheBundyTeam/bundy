@@ -1,68 +1,35 @@
-//Might delete when we get the authentication working
-var userName = getElementById("");
-var pass = getElementById("");
-
-//User adds new income source
-var incomeName = getElementById("");
-//New or updated income amount
-var incomeAmount = getElementById("");
-
-// User adds new expense name or could be existing
-var expenseName = getElementById("");
-// New or updated budget amount
-var expenseAmount = getElementById("");
-
-/*
-function NewAccount(){
-	const auth = firebase.auth();
-	const account = auth.createUserWithEmailAndPassword(username.value, pass.value).catch(function(error){
-		alert(error.message);
-	});
-}
-
-function LogIn(){
-	const auth = firebase.auth();
-	const logged = auth.signInWithEmailAndPassword(userName.value, pass.value).catch(function(error){
-		alert(error.message);
-	});
-}
-
-function LogOut(){
-	firebase.auth.signOut().catch(function(error){
-		alert(error.message);
-	});
-}
-*/
 
 function AddExpense(){
-	//Initialize the database
-	var fireData = firebase.database().ref();
-	//Access the child nodes and set to value
-	//For testing purposes, only one expense can be added and changed
-	fireData.child("expenses").set("expenses");
-	fireData.child("expenses").child("value").set(expenseAmount.value);
+	var expenseName = document.getElementById("");
+	var expenseAmount = document.getElementById("");
+	firebase.database().ref('users/' + user.uid).child("email").set({
+	expense: expenseAmount
+	});
 }
 
 function AddIncome(){
-	// Initialize the database
-	var fireData = firebase.database().ref();
-	//Access the child nodes and set to value
-	fireData.child("income").set("income");
-	fireData.child("income").child("value").set(incomeAmount.value);
+	//User adds new income source
+	var incomeName = document.getElementById("");
+	//New or updated income amount
+	var incomeAmount = document.getElementById("");
+	firebase.database().ref('users/' + user.uid).child("email").set({
+		income: incomeAmount
+	});
 }
 
 function GetAllExpenses(){
-	var database = firebase.database().ref();
-	database.child("expenses").on('child_added', function(data, prev){
-		var info = data.val();
-		return (info.value); //supposed to return the amount of expense
-	});
+	return firebase.database().ref('users/' + user.uid).child("email").on('value', GetData, Errors);
+}
+
+function GetData(data){
+	console.log(data.val());
+	return data.val();
+}
+
+function Errors(err){
+	console.log(err);
 }
 
 function GetAllIncome(){
-	var database = firebase.database().ref();
-	database.child("income").on('child_added', function(data, prev){
-		var info = data.val();
-		return (info.value); //supposed to return the amount of income
-	});
+	return firebase.database().ref('users/' + user.uid).child("email").on('value', GetData, Errors);
 }
