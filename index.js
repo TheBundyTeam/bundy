@@ -1,24 +1,24 @@
 
-function AddExpense(){
-	var expenseName = "expense"; //document.getElementById("").val();
+function ModifyExpense(){
+	var total_expenses = "expense"; //document.getElementById("").val();
 	var expenseAmount = 666; //document.getElementById("").val();
 	firebase.database().ref('users/' + user.uid).set({
-		expenses : expenseAmount
+		total_expenses : expenseAmount
 	});
 }
 
-function AddIncome(){
+function ModifyIncome(){
 	//User adds new income source
-	var incomeName = "income"; //document.getElementById("").val();
+	var total_budget = "income"; //document.getElementById("").val();
 	//New or updated income amount
-	var incomeAmount = 555; //document.getElementById("").val();
+	var budget = 555; //document.getElementById("").val();
 	firebase.database().ref('users/' + user.uid).set({
-		income : incomeAmount
+		total_budget : budget
 	});
 }
 
-function GetAllExpenses(){
-	return firebase.database().ref('users/' + user.uid).child("email").on('value', GetData, Errors);
+function GetExpenses(){
+	return firebase.database().ref('users/' + user.uid).on('value', GetData, Errors);
 }
 
 function GetData(data){
@@ -30,6 +30,6 @@ function Errors(err){
 	console.log(err);
 }
 
-function GetAllIncome(){
-	return firebase.database().ref('users/' + user.uid).child("email").on('value', GetData, Errors);
+function GetIncome(){
+	return firebase.database().ref('users/' + user.uid).on('value', GetData, Errors);
 }
