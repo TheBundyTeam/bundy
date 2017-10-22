@@ -11,6 +11,7 @@ firebase.initializeApp({
 // Handling User Authentication
 
 var data;
+var a;
 
 // Function to Clear
 function clearFields() {
@@ -109,12 +110,15 @@ $(document).ready(function () {
 });
 
 // Read Database
-function readData() {
+function readData(func) {
   var user = firebase.auth().currentUser;
   var items = firebase.database().ref('users/' + user.uid + '/month');
   items.once("value").then(function (snap) {
     data = snap.val();
+  }).then(func);
+}
 
+function loadDash() {
     var select = document.getElementById("dashboard-month");
     var monthNames = [
     "January", "February", "March",
@@ -122,6 +126,7 @@ function readData() {
     "August", "September", "October",
     "November", "December"
     ];
+
     for (month in data) {
       if (month === "10") {
         select.innerHTML += "<option value='" + month + "' selected>" + monthNames[month-1] + "</option>";
@@ -131,7 +136,6 @@ function readData() {
     }
     $('select').material_select();
 	  buildPage("10");
- });
 }
 
  //Builds
@@ -192,14 +196,77 @@ function log(mode) {
   var monthi = document.getElementById("dashboard-month");
   monthi = monthi.options[monthi.selectedIndex].value;
 
+  var valueTo;
   if (mode) {
-    data[monthi].sub[head].actual += num;
+    valueTo = Number(data[monthi].sub[head].actual) + Number(num);
+    data[monthi].sub[head].actual = valueTo;
+
   } else {
-    data[monthi].sub[head].actual -= num;
+    valueTo = Number(data[monthi].sub[head].actual) - Number(num);
+    data[monthi].sub[head].actual = valueTo;
+
   }
+  var userString = firebase.auth().currentUser.uid;
 
-  var userId = firebase.auth().currentUser.uId;
+  var monthString = monthi.toString();
+  var headString = head.toString()
 
-  firebase.database().ref('users/' + userId).update({month: data});
+  var dbqueryString = "/users" +"/" + userString + "/month/" + monthString +"/sub/" + headString;
+
+  firebase.database().ref(dbqueryString).update({
+    actual: valueTo
+  });
   buildPage(monthi);
+}
+
+function loadEdit() {
+  var select = document.getElementById("dashboard-month");
+  var monthNames = [
+  "January", "February", "March",
+  "April", "May", "June", "July",
+  "August", "September", "October",
+  "November", "December"
+  ];
+
+  for (month in data) {
+    if (month === "10") {
+      select.innerHTML += "<option value='" + month + "' selected>" + monthNames[month-1] + "</option>";
+    } else if (month) {
+      select.innerHTML += "<option value='" + month + "'>" + monthNames[month-1] + "</option>";
+    }
+  }
+  $('select').material_select();
+  loadList(10);
+}
+
+function loadList(month) {
+  var list = document.getElementById("in-list");
+  var j = 0;
+  list.innerHTML = "";
+
+  for (i in data[month].sub) {
+    list.innerHTML += "<a id='i-" + j + "' href='javascript:loadDet(" + j + ", \"" + i + "\");' class='collection-item'>" + i + "</a>";
+    j++;
+  }
+}
+
+function loadDet(index, header) {
+  if (a != null) {
+    $("#i-" + a).removeClass("active");
+  }
+  $("#i-" + index).addClass("active");
+  a = index;
+
+  var month = document.getElementById("dashboard-month").value;
+  var head = document.getElementById("in-name");
+  var exp = document.getElementById("in-num");
+  var act = document.getElementById("in-curr");
+  var tog = document.getElementById("in-flex");
+
+  head.innerHTML = header;
+  exp.value = data[month].sub[header].expected;
+  act.value = data[month].sub[header].actual;
+  tog.checked = data[month].sub[header].fixed;
+  tog.checked = !tog.checked;
+  Materialize.updateTextFields();
 }
