@@ -94,7 +94,7 @@ $(document).ready(function () {
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
   $('.scrollspy').scrollSpy({
-    "srollOffset": 68
+    "scrollOffset": 68
   });
 });
 
