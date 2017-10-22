@@ -195,11 +195,17 @@ function log(mode) {
   var num = document.getElementById("section-number").value;
   var monthi = document.getElementById("dashboard-month");
   monthi = monthi.options[monthi.selectedIndex].value;
+<<<<<<< HEAD
 
+=======
+  console.log(monthi);
+  console.log(month);
+>>>>>>> 8849f713b92cdf093a8bfb50601a55b4ac6d4f5a
   var valueTo;
   if (mode) {
     valueTo = Number(data[monthi].sub[head].actual) + Number(num);
     data[monthi].sub[head].actual = valueTo;
+<<<<<<< HEAD
 
   } else {
     valueTo = Number(data[monthi].sub[head].actual) - Number(num);
@@ -213,6 +219,25 @@ function log(mode) {
 
   var dbqueryString = "/users" +"/" + userString + "/month/" + monthString +"/sub/" + headString;
 
+=======
+    console.log(data[monthi].sub[head]);
+    //String(valueTo);
+    console.log(valueTo);
+  } else {
+    valueTo = Number(data[monthi].sub[head].actual) - Number(num);
+    data[monthi].sub[head].actual = valueTo;
+    //String(valueTo);
+    console.log(valueTo);
+  }
+  var userString = firebase.auth().currentUser.uid;
+  console.log(month);
+  var monthString = monthi.toString();
+  var headString = head.toString()
+  console.log(monthString);
+  console.log(headString);
+  var dbqueryString = "/users" +"/" + userString + "/month/" + monthString +"/sub/" + headString;
+  console.log(dbqueryString);
+>>>>>>> 8849f713b92cdf093a8bfb50601a55b4ac6d4f5a
   firebase.database().ref(dbqueryString).update({
     actual: valueTo
   });
