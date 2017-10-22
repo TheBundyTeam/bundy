@@ -36,10 +36,21 @@ function signupBundy() {
     // use user.uid to add user data to database
     firebase.database().ref('users/' + user.uid).set({
       email: email,
-      total_budget: 0,
-      total_expenses: 0
+      month: {
+        October: {
+          total: 0,
+          sub: {
+            rent: {
+              fixed: true,
+              expected: 0,
+              actual: 0
+            }
+          }
+        }
+      }
     });
     console.log("UID:", user.uid);
+    location.replace("dashboard.html")
   }, function(error) {
     // Stores the error message in variable errorMessage
     var errorMessage = error.message;
