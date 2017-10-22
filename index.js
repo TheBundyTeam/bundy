@@ -1,3 +1,4 @@
+
 //Might delete when we get the authentication working
 var userName = getElementById("");
 var pass = getElementById("");
@@ -8,9 +9,11 @@ var incomeName = getElementById("");
 var incomeAmount = getElementById("");
 
 // User adds new expense name or could be existing
-var expenseName = getElementById("");
+var expenseName = getElementById("a");
 // New or updated budget amount
-var expenseAmount = getElementById("");
+var expenseAmount = getElementById("b");
+
+firebase.initializeApp(firebaseConfig);
 
 /*
 function NewAccount(){
@@ -36,33 +39,33 @@ function LogOut(){
 
 function AddExpense(){
 	//Initialize the database
-	var fireData = firebase.database().ref();
+	firebase.database().ref('users/' + user.uid).set({
+		expense: expenseAmount;
+	});
 	//Access the child nodes and set to value
 	//For testing purposes, only one expense can be added and changed
-	fireData.child("expenses").set("expenses");
-	fireData.child("expenses").child("value").set(expenseAmount.value);
+	//fireData.child("expenses").set("expenses");
+	//fireData.child("expenses").child("value").set(expenseAmount.value);
 }
 
 function AddIncome(){
 	// Initialize the database
-	var fireData = firebase.database().ref();
+	firebase.database().ref('users/' + user.uid).set({
+		income: incomeAmount;
+	});
 	//Access the child nodes and set to value
-	fireData.child("income").set("income");
-	fireData.child("income").child("value").set(incomeAmount.value);
+	//fireData.child("income").set("income");
+	//fireData.child("income").child("value").set(incomeAmount.value);
 }
 
 function GetAllExpenses(){
-	var database = firebase.database().ref();
-	database.child("expenses").on('child_added', function(data, prev){
-		var info = data.val();
-		return (info.value); //supposed to return the amount of expense
+	firebase.database().ref('users/' + user.uid).on('value', snap => {
+		alert(JSON.stringify.(snap.val(), null, 1); //supposed to return the amount of income
 	});
 }
 
 function GetAllIncome(){
-	var database = firebase.database().ref();
-	database.child("income").on('child_added', function(data, prev){
-		var info = data.val();
-		return (info.value); //supposed to return the amount of income
+	firebase.database().ref('users/' + user.uid).on('value', snap => {
+		alert(JSON.stringify.(snap.val(), null, 1); //supposed to return the amount of income
 	});
 }
