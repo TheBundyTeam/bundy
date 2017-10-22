@@ -8,7 +8,6 @@ firebase.initializeApp({
   messagingSenderId: "608738133731"
 });
 
-
 // Handling User Authentication
 
 // Function to Clear
@@ -73,7 +72,6 @@ function signinBundy() {
   );
 }
 
-
 // Logout Function
 function logoutBundy(){
   // Attempts to sign-out
@@ -84,7 +82,6 @@ function logoutBundy(){
   // Error Handling
   });
 }
-
 
 $(document).ready(function () {
   $(".button-collapse").sideNav();
