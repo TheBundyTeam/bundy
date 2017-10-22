@@ -1,37 +1,19 @@
 
-//Might delete when we get the authentication working
-var email = getElementById("email");
-var pass = getElementById("password");
-
-//User adds new income source
-var incomeName = getElementById("");
-//New or updated income amount
-var incomeAmount = getElementById("");
-
-// User adds new expense name or could be existing
-var expenseName = getElementById("a");
-// New or updated budget amount
-var expenseAmount = getElementById("b");
-
-firebase.initializeApp(firebaseConfig);
-
-function AddUser(){
-	firebase.auth().onAuthStateChanged(function(user){
-		if (user) {
-			
-			firebase.database().ref('users/' + users.uid).set({
-				email:email;
-			});
-		}
-});
-
 function AddExpense(){
+	// User adds new expense name or could be existing
+	var expenseName = document.getElementById("");
+	// New or updated budget amount
+	var expenseAmount = document.getElementById("");
 	firebase.database().ref('users/' + user.uid).child("email").set({
 		expense: expenseAmount;
 	});
 }
 
 function AddIncome(){
+	//User adds new income source
+	var incomeName = document.getElementById("");
+	//New or updated income amount
+	var incomeAmount = document.getElementById("");
 	firebase.database().ref('users/' + user.uid).child("email").set({
 		income: incomeAmount;
 	});
@@ -42,12 +24,12 @@ function GetAllExpenses(){
 }
 
 function GetData(data){
-	Console.log(data.val());
+	console.log(data.val());
 	return data.val();
 }
 
 function Errors(err){
-	alert(err);
+	console.log(err);
 }
 
 function GetAllIncome(){
