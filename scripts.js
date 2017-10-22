@@ -1,4 +1,12 @@
 //  Scripts
+firebase.initializeApp({
+  apiKey: "AIzaSyC9DkdsLY2SA6j3McDKkAPdTIcVVjUR8X8",
+  authDomain: "thebundyteam.firebaseapp.com",
+  databaseURL: "https://thebundyteam.firebaseio.com",
+  projectId: "thebundyteam",
+  storageBucket: "thebundyteam.appspot.com",
+  messagingSenderId: "608738133731"
+});
 
 
 // Handling User Authentication
@@ -64,3 +72,10 @@ function logoutBundy(){
   // Error Handling
   });
 }
+
+
+$(document).ready(function () {
+  $(".button-collapse").sideNav();
+  $(".modal").modal();
+  $('.tooltipped').tooltip({delay: 50});
+});
