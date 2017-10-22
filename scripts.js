@@ -290,6 +290,7 @@ function saveBudgetCategory() {
     expected: exp,
     fixed: tog.toString()
   });
+  Materialize.toast("Budget has been updated.", 4000);
   readData();
 }
 
@@ -321,5 +322,6 @@ function createBudgetCategory() {
     expected: 0,
     fixed: false
   });
+  Materialize.toast("Your budget category has been added", 4000);
   location.reload();
 }
