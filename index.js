@@ -13,7 +13,7 @@ function ModifyIncome(){
 	//New or updated income amount
 	var budget = 555; //document.getElementById("").val();
 	firebase.database().ref('users/' + user.uid).set({
-		total_budget : budget
+    total_budget: budget
 	});
 }
 
