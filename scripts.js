@@ -19,6 +19,8 @@ function signupBundy(){
   .then(function () {
     // Toast indicating registration was successful
     Materialize.toast("Registration Successful!", 4000);
+    // Close Modal
+    $('#modal1').modal('close');
   }, function(error) {
     // Stores the error message in variable errorMessage
     var errorMessage = error.message;
@@ -39,6 +41,7 @@ function signinBundy() {
     .then(function() {
       // Toast indicating sign-in was successful
       Materialize.toast("You have been successfully signed in!", 4000);
+      $('#modal1').modal('close');
 
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
