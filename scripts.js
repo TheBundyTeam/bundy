@@ -168,7 +168,7 @@ function buildPage(month) {
 
 
     var str = "<div class='col s12 m12 l6'><h5>" +
-              i + " | $" + item.actual + " / $" + item.expected +
+              i + " | $" + Number(item.actual) + " / $" + Number(item.expected) +
               "</h5><div class='bar z-depth-1'><div id='d-" + j + "'" +
               " class='amount " + color(item.actual) + " accent-4' style='width: " + percent(item.actual, item.expected) + "%;'></div></div><a class='waves-effect waves-light btn teal lighten-1 modal-trigger' href='#modal1' onclick='update(\"" + i + "\");'>Update</a></div>";
     content.innerHTML += str;
