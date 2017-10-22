@@ -48,9 +48,10 @@ function signupBundy() {
           }
         }
       }
+    }).then(function() {
+      location.replace("dashboard.html");
     });
     console.log("UID:", user.uid);
-    location.replace("dashboard.html")
   }, function(error) {
     // Stores the error message in variable errorMessage
     var errorMessage = error.message;
