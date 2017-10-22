@@ -64,6 +64,7 @@ function signinBundy() {
       // get user UID upon successful login
       console.log("Login UID:", user.uid);
 
+
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
       var errorMessage = error.message;
@@ -92,16 +93,21 @@ $(document).ready(function () {
   $(".button-collapse").sideNav();
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
+  $('.scrollspy').scrollSpy({
+    "srollOffset": 68
+  });
 });
 
 
 // Read Database
 
-function readData(){
-  var leadsRef = database.ref('users');
-  leadsRef.on('value', function(snapshot) {
+function readData(user){
+  var userData = firebase.database().ref('users/' + user.uid);
+  userData.on('value', function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var childData = childSnapshot.val();
+        console.log(user.uid);
+        console.log(childData);
       });
   });
 }
