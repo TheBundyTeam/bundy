@@ -31,9 +31,11 @@ function signupBundy(){
     $('#modal1').modal('close');
     // clear the fields
     clearFields();
-    // use user.uid to add to database
+    // use user.uid to add user data to database
     firebase.database().ref('users/' + user.uid).set({
-      email: email
+      email: email,
+      total_budget: 0,
+      total_expenses: 0
     });
     console.log("uid", user.uid);
   }, function(error) {
