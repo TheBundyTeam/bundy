@@ -149,6 +149,8 @@ function buildPage(month) {
   };
 
   var percent = function (a, e) {
+    a = Number(a);
+    e = Number(e);
     var num = Math.abs(a / e) * 100;
     return (num <= 100)? num : 100;
   };
