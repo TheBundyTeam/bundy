@@ -55,7 +55,7 @@ function GetAllExpenses(){
 	var database = firebase.database().ref();
 	database.child("expenses").on('child_added', function(data, prev){
 		var info = data.val();
-		alert(info.value);
+		return (info.value); //supposed to return the amount of expense
 	});
 }
 
@@ -63,6 +63,6 @@ function GetAllIncome(){
 	var database = firebase.database().ref();
 	database.child("income").on('child_added', function(data, prev){
 		var info = data.val();
-		alert(info.value);
+		return (info.value); //supposed to return the amount of income
 	});
 }
