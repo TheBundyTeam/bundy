@@ -20,7 +20,7 @@ function clearFields() {
 }
 
 // Signup Function
-function signupBundy(){
+function signupBundy() {
   // Set email and password as variables "email" and "password"
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
@@ -66,7 +66,6 @@ function signinBundy() {
         location.replace("dashboard.html");
         clearFields();
         // get user UID upon successful login
-        _user = user;
         console.log("Login UID:", user.uid);
 
       });
