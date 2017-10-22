@@ -17,7 +17,7 @@ function clearFields() {
 }
 
 // Signup Function
-function signupBundy(){
+function signupBundy() {
   // Set email and password as variables "email" and "password"
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
@@ -58,10 +58,15 @@ function signinBundy() {
       // Toast indicating sign-in was successful
       Materialize.toast("You have been successfully signed in!", 4000);
       $('#modal1').modal('close');
-      location.replace("dashboard.html")
+      location.replace("dashboard.html");
       clearFields();
       // get user UID upon successful login
       console.log("Login UID:", user.uid);
+
+      console.log('users/' + user.uid + '/email/');
+      firebase.database().ref('users/' + user.uid + '/email').once('value').then(function(snapshot) {
+        console.log("email? ", snapshot.val());
+      });
 
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
