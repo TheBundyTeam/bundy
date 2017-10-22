@@ -64,6 +64,7 @@ function signinBundy() {
       // get user UID upon successful login
       console.log("Login UID:", user.uid);
 
+
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
       var errorMessage = error.message;
@@ -92,7 +93,9 @@ $(document).ready(function () {
   $(".button-collapse").sideNav();
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
-  $('.scrollspy').scrollSpy();
+  $('.scrollspy').scrollSpy({
+    "srollOffset": 68
+  });
 });
 
 
@@ -103,7 +106,7 @@ function readData(user){
   userData.on('value', function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var childData = childSnapshot.val();
-        console.log(childData);
+        console.log(user.uid);
         console.log(childData);
       });
   });
