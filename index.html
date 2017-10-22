@@ -62,24 +62,30 @@
     </div>
   </div>
 
-  <div class="grey lighten-5">
-    <div class="container" style="padding: 60px 0; width: 90%;">
+  <div class="grey lighten-3">
+    <div class="container" style="padding-top: 70px; padding-bottom: 40px; width: 90%;">
       <div class="row">
-        <div class="col l5">
+        <div class="col s12 m12 l5 hide-on-med-and-down">
           <img src="src/home-section.jpg" width="100%">
         </div>
-        <div class="col l7">
+        <div class="col s12 m12 l7">
           <h4 style="margin: 8px 0;">Tools &amp; Features</h4>
           <div class="divider green darken-1" style="height: 2px;"></div>
-          <p style="font-size: 19px;">We offer more than just tracking, more than just a tool to give our users the best with the newest technologies using Materialize and Firebase</p>
+          <p style="font-size: 19px;">We offer more than just tracking, more than just a tool, to give our users the best with the newest technologies using <span style="font-weight: bold;">Materialize</span> and <span style="font-weight: bold;">Firebase</span> by Google.</p>
           <div class="row">
-            <div style="col s6 m6 l6">
-              <ul>
-              </ul>
+            <div class="col s12 m6 l6">
+              <h5 style="margin-bottom: -6px;">Dashboard</h5>
+              <p style="color: #5d5d5d; margin-bottom: 40px;">Bundy is direct to you. View your spendings all month, every month all from the same page with a click of a button</p>
+
+              <h5 style="margin-bottom: -6px;">Customization</h5>
+              <p style="color: #5d5d5d; margin-bottom: 40px;">Bundy is made for you. Easy and intuitive controls to organize and view your spendings on the Bundy dashboard</p>
             </div>
-            <div style="col s6 m6 l6">
-              <ul>
-              </ul>
+            <div class="col s12 m6 l6">
+              <h5 style="margin-bottom: -6px;">Overview</h5>
+              <p style="color: #5d5d5d; margin-bottom: 40px;">Bundy cares about you. View how much you saved and your overall spendings with our spending overview</p>
+
+              <h5 style="margin-bottom: -6px;">Evolving</h5>
+              <p style="color: #5d5d5d; margin-bottom: 40px;">Bundy grows with you. Bundy reviews and analysis your spending trends to make the perfect budget for you</p>
             </div>
           </div>
         </div>
@@ -87,12 +93,20 @@
     </div>
   </div>
 
+  <div class="container">
+    <div class="row">
+
+    </div>
+  </div>
+
   <footer class="green accent-4 page-footer">
     <div class="container" style="padding: 0 6px;">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Fundy</h5>
+          <h5 class="white-text">Bundy</h5>
           <h6 class="grey-text text-lighten-4">The smart budgeting system that work with you.<br>Brought to you by 4 sleep deprived university students.</h6>
+          <h6 class="grey-text text-lighten-4" style="margin-top: 15px;">Email: Bundy@gmail.com</h6>
+          <h6 class="grey-text text-lighten-4">Facebook: https://facebook.com/Bundy</h6>
         </div>
         <div class="col l3 offset-l1 s12">
           <h5 class="white-text">Links</h5>
@@ -129,7 +143,7 @@
 
           <!-- Passsword Field -->
           <div class="input-field center-align">
-            <input id="password" type="password" class="validate">
+            <input id="password" type="password" class="validate" minlength="6" required>
             <label for="password">Password</label>
           </div>
 
@@ -149,21 +163,13 @@
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $(".button-collapse").sideNav();
-    $(".modal").modal();
-    $('.tooltipped').tooltip({delay: 50});
-  });
-</script>
 
 <!-- Firebase Section -->
-
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-<!-- Firebase Components Needed -->
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-database.js"></script>
+<<<<<<< HEAD
 
 <script>
   // initialize Firebase
@@ -208,6 +214,8 @@
 </script>
 
 <!-- Import scripts.js -->
+=======
+>>>>>>> 352495c3a3fcecfeabdfd31f06e9ed1cbae428fb
 <script type="text/javascript" src="scripts.js"></script>
 
 </html>
