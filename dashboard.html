@@ -1,10 +1,15 @@
 <html>
 <head>
-  <title>Bundy | Home</title>
+  <title>Bundy | Dashboard</title>
   <link rel="icon" type="img/ico" href="img/favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <style>
+    .bar {height: 30px; border: 2px solid #343434; width: 80%;}
+    .bar div {height: 100%;}
+  </style>
 </head>
 <body>
   <div class="navbar-fixed">
@@ -14,7 +19,7 @@
         <a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="index.html">Home</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="#">Edit Dashboard</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="javascript:logoutBundy();">Sign Out</a></li>
         </ul>
@@ -27,17 +32,88 @@
       <li><h6 class="white-text" style="line-height: 0;">Your Smart Budgetting Tool</h6></li>
     </div>
     <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
+    <li><a href="#">Edit Dashboard</a></li>
     <li><a href="#">Contact</a></li>
-    <li><a href="">Sign Out</a></li>
+    <li><a href="javascript:logoutBundy();">Sign Out</a></li>
   </ul>
 
-  <div>
-    <h1 class="center-align">Dashboard</h1>
+  <div class="section container">
+    <div class="row" style="margin-bottom: 0;">
+      <div class="col s12 m12 l4">
+        <h3 style="margin-bottom: 0;">Dashboard</h3>
+      </div>
+      <div class="input-field col s8 m7 l4" style="margin-top: 30px;">
+        <select>
+          <option value="" disabled>Choose your Month</option>
+          <option value="1" selected>Current</option>
+          <option value="2">September</option>
+          <option value="3">August</option>
+        </select>
+        <label>Materialize Select</label>
+      </div>
+      <div class="col s1" style="margin-top: 36px;">
+        <a class="green accent-5 waves-effect waves-light btn">View</a>
+      </div>
+    </div>
+    <div class="green accent-4 divider" style="height: 2px; margin-top: 0;"></div>
   </div>
 
+  <section class="container">
+    <div id="dashboard-content" class="row">
+      <div id="dashboard-all" class="col s12" style="padding-bottom: 14px;">
+        <h4>Budget</h4>
+        <div class="bar" style="height: 40px; width: 100%;">
+          <div id="d-0" class="amount">
+            <div class="green accent-5" style="width: 40%;"></div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Beginning of Sample Item -->
+      <div class="col s12 m12 l6">
+        <h5>Memes | $420 / $1000</h5>
+        <div class="bar">
+          <div id="d-0" class="amount">
+            <div class="green accent-5" style="width: 40%;"></div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Sample Item -->
 
+      <!-- Beginning of Sample Item -->
+      <div class="col s12 m12 l6">
+        <h5>Dank Memes | $420 / $9999</h5>
+        <div class="bar">
+          <div id="d-0" class="amount">
+            <div class="green accent-5" style="width: 40%;"></div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Sample Item -->
+
+      <!-- Beginning of Sample Item -->
+      <div class="col s12 m12 l6">
+        <h5>Memes | $420 / $1000</h5>
+        <div class="bar">
+          <div id="d-0" class="amount">
+            <div class="green accent-5" style="width: 40%;"></div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Sample Item -->
+
+      <!-- Beginning of Sample Item -->
+      <div class="col s12 m12 l6">
+        <h5>Dank Memes | $420 / $9999</h5>
+        <div class="bar">
+          <div id="d-0" class="amount">
+            <div class="green accent-5" style="width: 40%;"></div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Sample Item -->
+    </div>
+  </section>
 
   <footer class="green accent-4 page-footer">
     <div class="container" style="padding: 0 6px;">
@@ -50,8 +126,8 @@
           <h5 class="white-text">Links</h5>
           <ul>
             <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
-            <li><a class="grey-text text-lighten-3" href="#">About</a></li>
-            <li><a class="grey-text text-lighten-3" href="#">Contact</a></li>
+            <li><a class="grey-text text-lighten-3" href="index.html#about">About</a></li>
+            <li><a class="grey-text text-lighten-3" href="index.html#about">Contact</a></li>
             <li><a class="grey-text text-lighten-3" href="javascript:logoutBundy();">Sign Out</a></li>
           </ul>
         </div>
