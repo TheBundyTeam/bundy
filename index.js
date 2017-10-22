@@ -1,11 +1,9 @@
 
 function AddExpense(){
-	// User adds new expense name or could be existing
 	var expenseName = document.getElementById("");
-	// New or updated budget amount
 	var expenseAmount = document.getElementById("");
 	firebase.database().ref('users/' + user.uid).child("email").set({
-		expense: expenseAmount;
+	expense: expenseAmount
 	});
 }
 
@@ -15,7 +13,7 @@ function AddIncome(){
 	//New or updated income amount
 	var incomeAmount = document.getElementById("");
 	firebase.database().ref('users/' + user.uid).child("email").set({
-		income: incomeAmount;
+		income: incomeAmount
 	});
 }
 
