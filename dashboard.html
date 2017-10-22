@@ -22,7 +22,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="index.html">Home</a></li>
           <li><a href="editdashboard.html">Edit Dashboard</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
           <li><a href="javascript:logoutBundy();">Sign Out</a></li>
         </ul>
       </div>
@@ -35,7 +35,7 @@
     </div>
     <li><a href="index.html">Home</a></li>
     <li><a href="editdashboard.html">Edit Dashboard</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
     <li><a href="javascript:logoutBundy();">Sign Out</a></li>
   </ul>
 
@@ -44,83 +44,30 @@
       <div class="col s12 m12 l4">
         <h3 style="margin-bottom: 0;">Dashboard</h3>
       </div>
-      <div class="input-field col s8 m7 l4" style="margin-top: 30px;">
-        <select>
+      <div class="input-field col s8 m7 l6" style="margin-top: 30px;">
+        <select id="dashboard-month" onChange="buildPage(this.value);">
           <option value="" disabled>Choose your Month</option>
-          <option value="1" selected>Current</option>
-          <option value="2">September</option>
-          <option value="3">August</option>
         </select>
         <label>Materialize Select</label>
-      </div>
-      <div class="col s1" style="margin-top: 36px;">
-        <a class="green accent-5 waves-effect waves-light btn">View</a>
       </div>
     </div>
     <div class="green accent-4 divider" style="height: 2px; margin-top: 0;"></div>
   </div>
 
 
-  <section class="container">
-    <div id="dashboard-content" class="row">
-      <div id="dashboard-all" class="col s12" style="padding-bottom: 14px;">
-        <h4>Budget</h4>
+  <section class="container" style="margin-bottom: 40px;">
+    <div class="row">
+      <div class="col s12" style="padding-bottom: 14px;">
+        <h4 id="dashboard-all">Budget</h4>
         <div class="bar" style="height: 40px; width: 100%;">
-          <div id="d-0" class="amount">
-            <div class="green accent-5" style="width: 40%;"></div>
+          <div id="d-all" class="amount">
           </div>
         </div>
       </div>
-
-      <!-- Beginning of Sample Item -->
-      <div class="col s12 m12 l6">
-        <h5>Memes | $420 / $1000</h5>
-        <div class="bar">
-          <div id="d-0" class="amount">
-            <div class="green accent-5" style="width: 40%;"></div>
-          </div>
-        </div>
-      </div>
-      <!-- End of Sample Item -->
-
-      <!-- Beginning of Sample Item -->
-      <div class="col s12 m12 l6">
-        <h5>Dank Memes | $420 / $9999</h5>
-        <div class="bar">
-          <div id="d-0" class="amount">
-            <div class="green accent-5" style="width: 40%;"></div>
-          </div>
-        </div>
-      </div>
-      <!-- End of Sample Item -->
-
-      <!-- Beginning of Sample Item -->
-      <div class="col s12 m12 l6">
-        <h5>Memes | $420 / $1000</h5>
-        <div class="bar">
-          <div id="d-0" class="amount">
-            <div class="green accent-5" style="width: 40%;"></div>
-          </div>
-        </div>
-      </div>
-      <!-- End of Sample Item -->
-
-      <!-- Beginning of Sample Item -->
-      <div class="col s12 m12 l6">
-        <h5>Dank Memes | $420 / $9999</h5>
-        <div class="bar">
-          <div id="d-0" class="amount">
-            <div class="green accent-5" style="width: 40%;"></div>
-          </div>
-        </div>
-      </div>
-      <!-- End of Sample Item -->
+    </div>
+    <div id="dashboard-content" class="row">
     </div>
   </section>
-
-  <div>
-    <a href="javascript:readData();">Read DAta to Console (TESTING)</a>
-  </div>
 
   <footer class="green accent-4 page-footer">
     <div class="container" style="padding: 0 6px;">
@@ -134,10 +81,10 @@
         <div class="col l3 offset-l1 s12">
           <h4 class="white-text" style="padding-top: 20px;">Links</h4>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#home">Home</a></li>
-            <li><a class="grey-text text-lighten-3" href="#about">About</a></li>
-            <li><a class="grey-text text-lighten-3" href="#contact">Contact</a></li>
-            <li><a class="grey-text text-lighten-3 modal-trigger" href="#modal1">Sign In/Sign Out</a></li>
+            <li><a class="grey-text text-lighten-3" href="index.html#home">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="index.html#about">About</a></li>
+            <li><a class="grey-text text-lighten-3" href="index.html#contact">Contact</a></li>
+            <li><a class="grey-text text-lighten-3 modal-trigger" href="javascript:logoutBundy()">Sign Out</a></li>
           </ul>
         </div>
       </div>
@@ -150,62 +97,26 @@
     </div>
   </footer>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer" style="max-width: 700px; max-height: 440px;">
-    <div class="modal-content">
-      <div class="row" style="padding-top: 20px;">
-        <div class="col s12 m6 offset-m3">
-          <!-- Modal Heading -->
-          <h4 class="center-align">Sign In to your Bundy account!</h4>
-
-          <!-- Email Field -->
-          <div class="input-field center-align">
-            <input id="email" type="email" class="validate">
-            <label for="email">Email</label>
-          </div>
-
-          <!-- Passsword Field -->
-          <div class="input-field center-align">
-            <input id="password" type="password" class="validate">
-            <label for="password">Password</label>
-          </div>
-
-          <p class="center-align" style="font-size: 11px;">Not registered? Click "Sign Up" to join us today!</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal Footer -->
-    <div class="modal-footer">
-      <a href="javascript:signupBundy();clearFields()" class="modal-action waves-effect waves-green btn-flat">Sign Up</a>
-      <a href="javascript:signinBundy();clearFields()" class="modal-action waves-effect waves-green btn-flat">Sign In</a>
-      <a href="javascript:clearFields()" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-    </div>
-  </div>
-
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $(".button-collapse").sideNav();
-    $(".modal").modal();
-    $('.tooltipped').tooltip({delay: 50});
-  });
-
-
-</script>
-
-<!-- Firebase Section -->
 
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-<!-- Firebase Components Needed -->
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-database.js"></script>
 
-
 <!-- Import scripts.js -->
 <script type="text/javascript" src="scripts.js"></script>
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      readData();
+    } else {
+      alert("No User Found, Redirecting to home");
+      location.replace("index.html");
+    }
+  });
+</script>
 
 </html>

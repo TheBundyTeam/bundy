@@ -10,6 +10,8 @@ firebase.initializeApp({
 
 // Handling User Authentication
 
+var data;
+
 // Function to Clear
 function clearFields() {
   document.getElementById("email").value = "";
@@ -34,7 +36,7 @@ function signupBundy() {
     firebase.database().ref('users/' + user.uid).set({
       email: email,
       month: {
-        October: {
+        10: {
           total: 0,
           sub: {
             rent: {
@@ -75,7 +77,6 @@ function signinBundy() {
         Materialize.toast("You have been successfully signed in!", 4000);
         $('#modal1').modal('close');
         location.replace("dashboard.html");
-        clearFields();
       });
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
@@ -100,18 +101,73 @@ function logoutBundy(){
   });
 }
 
-
 $(document).ready(function () {
   $(".button-collapse").sideNav();
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
-  $('.scrollspy').scrollSpy({"scrollOffset": 68});
-  $('select').material_select();
+  $('.scrollspy').scrollSpy({"scrollOffset": 70});
 });
 
-
 // Read Database
-function readData(){
+function readData() {
   var user = firebase.auth().currentUser;
-  var userData = firebase.database().ref('users/' + user.uid);
+  var items = firebase.database().ref('users/' + user.uid + '/month');
+  items.once("value").then(function (snap) {
+    data = snap.val();
+
+    var select = document.getElementById("dashboard-month");
+    var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+    ];
+    for (month in data) {
+      if (month === "10") {
+        select.innerHTML += "<option value='" + month + "' selected>" + monthNames[month-1] + "</option>";
+      } else if (month) {
+        select.innerHTML += "<option value='" + month + "'>" + monthNames[month-1] + "</option>";
+      }
+    }
+    $('select').material_select();
+	  buildPage("10");
+ });
+}
+
+ //Builds
+function buildPage(month) {
+  var totalH = document.getElementById("dashboard-all");
+  var totalD = document.getElementById("d-all");
+  var content = document.getElementById("dashboard-content");
+
+  var color = function (actual) {
+    return (actual >= 0) ? "green" : "red";
+  };
+
+  var percent = function (a, e) {
+    var num = Math.abs(a / e) * 100;
+    return (num <= 100)? num : 100;
+  };
+
+  var totalActual = 0;
+  var totalExpect = 0;
+  var j = 0;
+
+  content.innerHTML = "";
+
+  for (i in data[month].sub) {
+    var item = data[month].sub[i]
+    totalActual += item.actual;
+    totalExpect += item.expected;
+    var str = "<div class='col s12 m12 l6'><h5>" +
+              i + " | $" + item.actual + " / $" + item.expected +
+              "</h5><div class='bar'><div id='d-" + j + "'" +
+              " class='amount'><div class='" + color(item.actual) + " accent-4' style='width: " + percent(item.actual, item.expected) + "%;''></div></div></div></div>";
+    content.innerHTML += str;
+    j++;
+  }
+
+  totalH.innerHTML = "Budget | $" + totalActual + "/ $" + data[month].total;
+  totalD.innerHTML = "<div class='" + color(totalActual) + " accent-4' style='width: " + percent(totalActual, totalExpect) + "%;'></div>"
+
 }
