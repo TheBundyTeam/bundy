@@ -71,11 +71,12 @@ function signinBundy() {
     firebase.auth.Auth.Persistence.SESSION).then(function () {
       return firebase.auth()
       .signInWithEmailAndPassword(email, password).then(function(user) {
+        // get user UID upon successful login
+        console.log("Login UID:", user.uid);
         // Toast indicating sign-in was successful
         Materialize.toast("You have been successfully signed in!", 4000);
         $('#modal1').modal('close');
         location.replace("dashboard.html");
-
       });
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
@@ -86,8 +87,6 @@ function signinBundy() {
   );
 
 }
-
-
 
 // Logout Function
 function logoutBundy(){
