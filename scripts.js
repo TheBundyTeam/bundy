@@ -24,11 +24,18 @@ function signupBundy(){
   var password = document.getElementById("password").value;
   // Firebase Authentication Signup
   firebase.auth().createUserWithEmailAndPassword(email, password)
-  .then(function () {
+  .then(function(user) {
     // Toast indicating registration was successful
     Materialize.toast("Registration Successful!", 4000);
     // Close Modal
     $('#modal1').modal('close');
+    // clear the fields
+    clearFields();
+    // use user.uid to add to database
+    firebase.database().ref('users/' + user.uid).set({
+      email: email
+    });
+    console.log("uid", user.uid);
   }, function(error) {
     // Stores the error message in variable errorMessage
     var errorMessage = error.message;
@@ -51,7 +58,7 @@ function signinBundy() {
       Materialize.toast("You have been successfully signed in!", 4000);
       $('#modal1').modal('close');
       location.replace("dashboard.html")
-
+      clearFields();
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
       var errorMessage = error.message;
