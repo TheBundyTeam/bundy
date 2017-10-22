@@ -78,8 +78,6 @@ function signinBundy() {
 function logoutBundy(){
   // Attempts to sign-out
   firebase.auth().signOut().then(function() {
-  // Toast for Logout
-  Materialize.toast("You have been successfully logged out!", 4000);
   // Executes when Sign-out successful.
   location.replace("index.html")
   }).catch(function(error) {
@@ -93,15 +91,3 @@ $(document).ready(function () {
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
 });
-
-
-// Read Database
-
-function readData(){
-  var leadsRef = database.ref('users');
-  leadsRef.on('value', function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var childData = childSnapshot.val();
-      });
-  });
-}
