@@ -2,7 +2,6 @@
 function AddExpense(){
 	var expenseName = "expense"; //document.getElementById("").val();
 	var expenseAmount = 666; //document.getElementById("").val();
-	alert("fdgsds");
 	firebase.database().ref('users/' + user.uid).set({
 		expenses : expenseAmount
 	});
@@ -13,7 +12,6 @@ function AddIncome(){
 	var incomeName = "income"; //document.getElementById("").val();
 	//New or updated income amount
 	var incomeAmount = 555; //document.getElementById("").val();
-	alert("adsadasa");
 	firebase.database().ref('users/' + user.uid).set({
 		income : incomeAmount
 	});
