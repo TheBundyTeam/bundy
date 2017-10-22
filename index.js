@@ -1,7 +1,7 @@
 
 //Might delete when we get the authentication working
-var userName = getElementById("");
-var pass = getElementById("");
+var email = getElementById("email");
+var pass = getElementById("password");
 
 //User adds new income source
 var incomeName = getElementById("");
@@ -15,31 +15,19 @@ var expenseAmount = getElementById("b");
 
 firebase.initializeApp(firebaseConfig);
 
-/*
-function NewAccount(){
-	const auth = firebase.auth();
-	const account = auth.createUserWithEmailAndPassword(username.value, pass.value).catch(function(error){
-		alert(error.message);
-	});
-}
-
-function LogIn(){
-	const auth = firebase.auth();
-	const logged = auth.signInWithEmailAndPassword(userName.value, pass.value).catch(function(error){
-		alert(error.message);
-	});
-}
-
-function LogOut(){
-	firebase.auth.signOut().catch(function(error){
-		alert(error.message);
-	});
-}
-*/
+function AddUser(){
+	firebase.auth().onAuthStateChanged(function(user){
+		if (user) {
+			
+			firebase.database().ref('users/' + users.uid).set({
+				email:email;
+			});
+		}
+});
 
 function AddExpense(){
 	//Initialize the database
-	firebase.database().ref('users/' + user.uid).set({
+	firebase.database().ref('users/' + user.uid).child("email").set({
 		expense: expenseAmount;
 	});
 	//Access the child nodes and set to value
@@ -50,7 +38,7 @@ function AddExpense(){
 
 function AddIncome(){
 	// Initialize the database
-	firebase.database().ref('users/' + user.uid).set({
+	firebase.database().ref('users/' + user.uid).child("email").set({
 		income: incomeAmount;
 	});
 	//Access the child nodes and set to value
@@ -59,13 +47,13 @@ function AddIncome(){
 }
 
 function GetAllExpenses(){
-	firebase.database().ref('users/' + user.uid).on('value', snap => {
-		alert(JSON.stringify.(snap.val(), null, 1); //supposed to return the amount of income
+	firebase.database().ref('users/' + user.uid).child("email").on('value', snap => {
+		return (JSON.stringify.(snap.val(), null, 1); //supposed to return the amount of income
 	});
 }
 
 function GetAllIncome(){
-	firebase.database().ref('users/' + user.uid).on('value', snap => {
-		alert(JSON.stringify.(snap.val(), null, 1); //supposed to return the amount of income
+	firebase.database().ref('users/' + user.uid).child("email").on('value', snap => {
+		return (JSON.stringify.(snap.val(), null, 1); //supposed to return the amount of income
 	});
 }
