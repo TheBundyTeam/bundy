@@ -154,7 +154,7 @@ function buildPage(month) {
   };
 
   var totalActual = 0;
-  var totalExpect = Number(data[month].total);
+  var totalExpect = 0;
   var j = 0;
 
   content.innerHTML = "";
@@ -164,6 +164,7 @@ function buildPage(month) {
     totalActual += Number(item.actual);
     totalExpect += Number(item.expected);
 
+
     var str = "<div class='col s12 m12 l6'><h5>" +
               i + " | $" + item.actual + " / $" + item.expected +
               "</h5><div class='bar z-depth-1'><div id='d-" + j + "'" +
@@ -172,7 +173,7 @@ function buildPage(month) {
     j++;
   }
 
-  totalH.innerHTML = "Budget | $" + totalActual + "/ $" + totalExpect;
+  totalH.innerHTML = "Budget | $" + totalActual + "/ $" + data[month].total;
   totalD.innerHTML = "<div class='" + color(totalActual) + " accent-4' style='width: " + percent(totalActual, totalExpect) + "%;'></div>"
 
 }
@@ -268,55 +269,4 @@ function loadDet(index, header) {
   tog.checked = data[month].sub[header].fixed;
   tog.checked = !tog.checked;
   Materialize.updateTextFields();
-}
-
-function saveBudgetCategory() {
-  var month = document.getElementById("dashboard-month").value;
-  var head = document.getElementById("in-name").innerHTML;
-  var exp = document.getElementById("in-num").value;
-  var act = document.getElementById("in-curr").value;
-  var tog = !(document.getElementById("in-flex").checked);
-
-
-  var userString = firebase.auth().currentUser.uid;
-  var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/" + head;
-  console.log(dbqueryString);
-
-  firebase.database().ref(dbqueryString).update({
-    actual: act,
-    expected: exp,
-    fixed: tog.toString()
-  });
-  readData();
-}
-
-function deleteBudgetCategory() {
-  var month = document.getElementById("dashboard-month").value;
-  var head = document.getElementById("in-name").innerHTML;
-  var exp = document.getElementById("in-num").value;
-  var act = document.getElementById("in-curr").value;
-  var tog = !(document.getElementById("in-flex").checked);
-
-
-  var userString = firebase.auth().currentUser.uid;
-  var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/";
-  console.log(dbqueryString);
-
-  firebase.database().ref(dbqueryString).child(head).remove();
-  location.reload();
-}
-
-function createBudgetCategory() {
-  var head = document.getElementById("in-new").value;
-  var month = document.getElementById("dashboard-month").value;
-  var userString = firebase.auth().currentUser.uid;
-
-  var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/" + head;
-
-  firebase.database().ref(dbqueryString).set({
-    actual: 0,
-    expected: 0,
-    fixed: false
-  });
-  location.reload();
 }
