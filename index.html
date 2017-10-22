@@ -176,6 +176,17 @@
     messagingSenderId: "608738133731"
   };
   firebase.initializeApp(config);
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) { // user is signed in
+      var email = getElementById("email").val();
+      firebase.database().ref('users/' + user.uid).set({
+        email: email
+      });
+    } else { // no user is signed in
+    }
+  }); 
+
 </script>
 
 
