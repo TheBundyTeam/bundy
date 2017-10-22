@@ -42,7 +42,7 @@
   <div class="section container">
     <div class="row" style="margin-bottom: 0;">
       <div class="col s12 m12 l4">
-        <h3 style="margin-bottom: 0;">Dashboard</h3>
+        <h3 style="margin-bottom: 0;">Edit Dashboard</h3>
       </div>
       <div class="input-field col s8 m7 l4" style="margin-top: 30px;">
         <select>
@@ -64,12 +64,12 @@
   <section class="container">
     <div id="dashboard-content" class="row">
       <div id="dashboard-all" class="col s12" style="padding-bottom: 14px;">
-        <h4>Budget</h4>
-        <div class="bar" style="height: 40px; width: 100%;">
-          <div id="d-0" class="amount">
-            <div class="green accent-5" style="width: 40%;"></div>
-          </div>
-        </div>
+	    <div style="float:left">
+        <h4>List</h4>
+		</div>
+		<div style="float:right">
+		<h4>Details</h4>
+		</div>
       </div>
 
       <!-- Beginning of Sample Item -->
@@ -80,6 +80,21 @@
             <div class="green accent-5" style="width: 40%;"></div>
           </div>
         </div>
+	   <ul>
+         <li><a class="green-text text-lighten-3" href="#">Edit Item</a></li>
+       </ul>
+      </div>
+      <!-- End of Sample Item -->
+
+      <!-- Beginning of Sample Item -->
+      <div class="col s12 m12 l6">
+		 <input id="budget-name" placeholder="Budget Name"></input>
+      </div>
+      <!-- End of Sample Item -->
+
+      <!-- Beginning of Sample Item -->
+      <div class="col s12 m12 l6">
+        <input id="budget-value" placeholder="Budget Amount"></input>
       </div>
       <!-- End of Sample Item -->
 
@@ -91,30 +106,14 @@
             <div class="green accent-5" style="width: 40%;"></div>
           </div>
         </div>
+	   <ul>
+         <li><a class="green-text text-lighten-3" href="#">Edit Item</a></li>
+       </ul>
       </div>
       <!-- End of Sample Item -->
-
-      <!-- Beginning of Sample Item -->
-      <div class="col s12 m12 l6">
-        <h5>Memes | $420 / $1000</h5>
-        <div class="bar">
-          <div id="d-0" class="amount">
-            <div class="green accent-5" style="width: 40%;"></div>
-          </div>
-        </div>
-      </div>
-      <!-- End of Sample Item -->
-
-      <!-- Beginning of Sample Item -->
-      <div class="col s12 m12 l6">
-        <h5>Dank Memes | $420 / $9999</h5>
-        <div class="bar">
-          <div id="d-0" class="amount">
-            <div class="green accent-5" style="width: 40%;"></div>
-          </div>
-        </div>
-      </div>
-      <!-- End of Sample Item -->
+	      <ul>
+            <li><a class="green-text text-lighten-3" href="#">Save Changes</a></li>
+          </ul>
     </div>
   </section>
 
