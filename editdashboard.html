@@ -66,6 +66,7 @@
             <div id="in-list" class="collection">
               <a href="#!" class="collection-item">Alvin</a>
             </div>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add more</a>
           </div>
         </div>
       </div>
@@ -100,6 +101,26 @@
           <div class="switch col s2 offset-s1">
             <a href="javascript:deleteBudgetCategory();" class="waves-effect waves-light btn red accent-4">Delete</a>
           </div>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+              <div class="modal-content">
+                <div class="container">
+                  <h4>What are you budgeting for?</h4>
+                  <div class="row">
+                    <div class="input-field col s12 m8">
+                      <input id="in-new" type="text" class="validate">
+                      <label for="in-new">Name</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="divider"></div>
+                <a href="javascript:createBudgetCategory();" class="modal-action modal-close waves-effect waves-green btn-flat">Create</a>
+              </div>
+            </div>
+
         </div>
 
       </div>

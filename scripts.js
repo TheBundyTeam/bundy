@@ -154,16 +154,15 @@ function buildPage(month) {
   };
 
   var totalActual = 0;
-  var totalExpect = 0;
+  var totalExpect = Number(data[month].total);
   var j = 0;
 
   content.innerHTML = "";
 
   for (i in data[month].sub) {
     var item = data[month].sub[i]
-    totalActual += item.actual;
-    totalExpect += item.expected;
-
+    totalActual += Number(item.actual);
+    totalExpect += Number(item.expected);
 
     var str = "<div class='col s12 m12 l6'><h5>" +
               i + " | $" + item.actual + " / $" + item.expected +
@@ -173,7 +172,7 @@ function buildPage(month) {
     j++;
   }
 
-  totalH.innerHTML = "Budget | $" + totalActual + "/ $" + data[month].total;
+  totalH.innerHTML = "Budget | $" + totalActual + "/ $" + totalExpect;
   totalD.innerHTML = "<div class='" + color(totalActual) + " accent-4' style='width: " + percent(totalActual, totalExpect) + "%;'></div>"
 
 }
@@ -304,5 +303,20 @@ function deleteBudgetCategory() {
   console.log(dbqueryString);
 
   firebase.database().ref(dbqueryString).child(head).remove();
+  location.reload();
+}
+
+function createBudgetCategory() {
+  var head = document.getElementById("in-new").value;
+  var month = document.getElementById("dashboard-month").value;
+  var userString = firebase.auth().currentUser.uid;
+
+  var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/" + head;
+
+  firebase.database().ref(dbqueryString).set({
+    actual: 0,
+    expected: 0,
+    fixed: false
+  });
   location.reload();
 }
