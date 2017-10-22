@@ -26,34 +26,30 @@ function AddUser(){
 });
 
 function AddExpense(){
-	//Initialize the database
 	firebase.database().ref('users/' + user.uid).child("email").set({
 		expense: expenseAmount;
 	});
-	//Access the child nodes and set to value
-	//For testing purposes, only one expense can be added and changed
-	//fireData.child("expenses").set("expenses");
-	//fireData.child("expenses").child("value").set(expenseAmount.value);
 }
 
 function AddIncome(){
-	// Initialize the database
 	firebase.database().ref('users/' + user.uid).child("email").set({
 		income: incomeAmount;
 	});
-	//Access the child nodes and set to value
-	//fireData.child("income").set("income");
-	//fireData.child("income").child("value").set(incomeAmount.value);
 }
 
 function GetAllExpenses(){
-	firebase.database().ref('users/' + user.uid).child("email").on('value', snap => {
-		return (JSON.stringify.(snap.val(), null, 1); //supposed to return the amount of income
-	});
+	return firebase.database().ref('users/' + user.uid).child("email").on('value', GetData, Errors);
+}
+
+function GetData(data){
+	Console.log(data.val());
+	return data.val();
+}
+
+function Errors(err){
+	alert(err);
 }
 
 function GetAllIncome(){
-	firebase.database().ref('users/' + user.uid).child("email").on('value', snap => {
-		return (JSON.stringify.(snap.val(), null, 1); //supposed to return the amount of income
-	});
+	return firebase.database().ref('users/' + user.uid).child("email").on('value', GetData, Errors);
 }
