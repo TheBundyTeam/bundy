@@ -8,9 +8,6 @@ firebase.initializeApp({
   messagingSenderId: "608738133731"
 });
 
-
-
-
 // Handling User Authentication
 
 // Function to Clear
@@ -72,14 +69,13 @@ function signinBundy() {
     firebase.auth.Auth.Persistence.SESSION).then(function () {
       return firebase.auth()
       .signInWithEmailAndPassword(email, password).then(function(user) {
+        // get user UID upon successful login
+        console.log("Login UID:", user.uid);
         // Toast indicating sign-in was successful
         Materialize.toast("You have been successfully signed in!", 4000);
         $('#modal1').modal('close');
         location.replace("dashboard.html");
         clearFields();
-        // get user UID upon successful login
-        console.log("Login UID:", user.uid);
-
       });
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
