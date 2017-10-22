@@ -24,11 +24,20 @@ function signupBundy(){
   var password = document.getElementById("password").value;
   // Firebase Authentication Signup
   firebase.auth().createUserWithEmailAndPassword(email, password)
-  .then(function () {
+  .then(function(user) {
     // Toast indicating registration was successful
     Materialize.toast("Registration Successful!", 4000);
     // Close Modal
     $('#modal1').modal('close');
+    // clear the fields
+    clearFields();
+    // use user.uid to add user data to database
+    firebase.database().ref('users/' + user.uid).set({
+      email: email,
+      total_budget: 0,
+      total_expenses: 0
+    });
+    console.log("uid", user.uid);
   }, function(error) {
     // Stores the error message in variable errorMessage
     var errorMessage = error.message;
@@ -51,7 +60,7 @@ function signinBundy() {
       Materialize.toast("You have been successfully signed in!", 4000);
       $('#modal1').modal('close');
       location.replace("dashboard.html")
-
+      clearFields();
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
       var errorMessage = error.message;
@@ -66,6 +75,8 @@ function signinBundy() {
 function logoutBundy(){
   // Attempts to sign-out
   firebase.auth().signOut().then(function() {
+  // Toast for Logout
+  Materialize.toast("You have been successfully logged out!", 4000);
   // Executes when Sign-out successful.
   location.replace("index.html")
   }).catch(function(error) {
@@ -79,3 +90,15 @@ $(document).ready(function () {
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
 });
+
+
+// Read Database
+
+function readData(){
+  var leadsRef = database.ref('users');
+  leadsRef.on('value', function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var childData = childSnapshot.val();
+      });
+  });
+}

@@ -1,19 +1,19 @@
 
 function AddExpense(){
-	var expenseName = document.getElementById("");
-	var expenseAmount = document.getElementById("");
-	firebase.database().ref('users/' + user.uid).child("email").set({
-	expense: expenseAmount
+	var expenseName = "expense"; //document.getElementById("").val();
+	var expenseAmount = 666; //document.getElementById("").val();
+	firebase.database().ref('users/' + user.uid).set({
+		expenses : expenseAmount
 	});
 }
 
 function AddIncome(){
 	//User adds new income source
-	var incomeName = document.getElementById("");
+	var incomeName = "income"; //document.getElementById("").val();
 	//New or updated income amount
-	var incomeAmount = document.getElementById("");
-	firebase.database().ref('users/' + user.uid).child("email").set({
-		income: incomeAmount
+	var incomeAmount = 555; //document.getElementById("").val();
+	firebase.database().ref('users/' + user.uid).set({
+		income : incomeAmount
 	});
 }
 
