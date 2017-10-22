@@ -160,10 +160,12 @@ function buildPage(month) {
     var item = data[month].sub[i]
     totalActual += item.actual;
     totalExpect += item.expected;
+
+
     var str = "<div class='col s12 m12 l6'><h5>" +
               i + " | $" + item.actual + " / $" + item.expected +
-              "</h5><div class='bar'><div id='d-" + j + "'" +
-              " class='amount'><div class='" + color(item.actual) + " accent-4' style='width: " + percent(item.actual, item.expected) + "%;''></div></div></div></div>";
+              "</h5><div class='bar z-depth-1'><div id='d-" + j + "'" +
+              " class='amount " + color(item.actual) + " accent-4' style='width: " + percent(item.actual, item.expected) + "%;'></div></div><a class='waves-effect waves-light btn teal lighten-1 modal-trigger' href='#modal1' onclick='update(\"" + i + "\");'>Update</a></div>";
     content.innerHTML += str;
     j++;
   }
@@ -171,4 +173,34 @@ function buildPage(month) {
   totalH.innerHTML = "Budget | $" + totalActual + "/ $" + data[month].total;
   totalD.innerHTML = "<div class='" + color(totalActual) + " accent-4' style='width: " + percent(totalActual, totalExpect) + "%;'></div>"
 
+}
+
+function update(section) {
+  console.log(section);
+  var head = document.getElementById("section-name");
+  var num = document.getElementById("section-amount");
+  var month = document.getElementById("dashboard-month");
+  month = month.options[month.selectedIndex].value;
+
+  head.innerHTML = section;
+  num.innerHTML = data[month].sub[section].actual + " / " + data[month].sub[section].expected;
+
+}
+
+function log(mode) {
+  var head = document.getElementById("section-name").innerHTML;
+  var num = document.getElementById("section-number").value;
+  var monthi = document.getElementById("dashboard-month");
+  monthi = monthi.options[monthi.selectedIndex].value;
+
+  if (mode) {
+    data[monthi].sub[head].actual += num;
+  } else {
+    data[monthi].sub[head].actual -= num;
+  }
+
+  var userId = firebase.auth().currentUser.uId;
+
+  firebase.database().ref('users/' + userId).update({month: data});
+  buildPage(monthi);
 }
