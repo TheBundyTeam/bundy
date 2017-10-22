@@ -1,0 +1,502 @@
+{
+  "users" : {
+    "LqGI7j5tB2ZV5KlUd0syt3XmKfl1" : {
+      "email" : "admin@bundy.ca",
+      "month" : {
+        10 : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        11 : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 294,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 289,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 150.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Thanksgiving Spending" : {
+              "actual" : 100,
+              "expected" : 150,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        12 : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Christmas Spending" : {
+              "actual" : 540,
+              "expected" : 600,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        1 : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        2 : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        3 : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        "4" : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        "5" : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        "6" : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        "7" : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        "8" : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        },
+        "9" : {
+          "sub" : {
+            "Rent" : {
+              "actual" : 1337,
+              "expected" : 1337,
+              "fixed" : true
+            },
+            "Phone and Internet" : {
+              "actual" : 100,
+              "expected" : 100,
+              "fixed" : true
+            },
+            "Groceries" : {
+              "actual" : 250,
+              "expected" : 300,
+              "fixed" : false
+            },
+            "Entertainment" : {
+              "actual" : 322.50,
+              "expected" : 325,
+              "fixed" : false
+            },
+            "Transportation Costs" : {
+              "actual" : 134.50,
+              "expected" : 176.25,
+              "fixed" : false
+            },
+            "Gym Membership" : {
+              "actual" : 75,
+              "expected" : 75,
+              "fixed" : false
+            },
+            "Halloween Spending" : {
+              "actual" : 80,
+              "expected" : 100,
+              "fixed" : false
+            }
+          },
+          "total" : 2413.25
+        }
+      }
+    },
+    "User" : {
+      "Month" : {
+        "Subsections " : {
+          "Memes" : {
+            "Is it fixed?" : "boolean",
+            "actual value" : "dollars",
+            "expected value" : "dollars"
+          }
+        },
+        "Total Budget Available" : "fixed"
+      },
+      "email" : "address"
+    }
+  }
+}
