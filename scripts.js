@@ -9,6 +9,8 @@ firebase.initializeApp({
 });
 
 
+
+
 // Handling User Authentication
 
 // Function to Clear
@@ -18,7 +20,7 @@ function clearFields() {
 }
 
 // Signup Function
-function signupBundy(){
+function signupBundy() {
   // Set email and password as variables "email" and "password"
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
@@ -54,17 +56,19 @@ function signinBundy() {
   var password = document.getElementById("password").value;
 
   // Firebase Authentication Signin
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(function(user) {
-      // Toast indicating sign-in was successful
-      Materialize.toast("You have been successfully signed in!", 4000);
-      $('#modal1').modal('close');
-      location.replace("dashboard.html")
-      clearFields();
-      // get user UID upon successful login
-      console.log("Login UID:", user.uid);
+  firebase.auth().setPersistence(
+    firebase.auth.Auth.Persistence.SESSION).then(function () {
+      return firebase.auth()
+      .signInWithEmailAndPassword(email, password).then(function(user) {
+        // Toast indicating sign-in was successful
+        Materialize.toast("You have been successfully signed in!", 4000);
+        $('#modal1').modal('close');
+        location.replace("dashboard.html");
+        clearFields();
+        // get user UID upon successful login
+        console.log("Login UID:", user.uid);
 
-
+      });
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
       var errorMessage = error.message;
@@ -72,7 +76,9 @@ function signinBundy() {
       Materialize.toast(errorMessage, 4000);
     }
   );
+
 }
+
 
 
 // Logout Function
@@ -93,21 +99,15 @@ $(document).ready(function () {
   $(".button-collapse").sideNav();
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
-  $('.scrollspy').scrollSpy({
-    "scrollOffset": 68
-  });
+  $('.scrollspy').scrollSpy({"scrollOffset": 68});
+  $('select').material_select();
 });
 
 
 // Read Database
 
-function readData(user){
+function readData(){
+  var user = firebase.auth().currentUser;
   var userData = firebase.database().ref('users/' + user.uid);
-  userData.on('value', function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var childData = childSnapshot.val();
-        console.log(user.uid);
-        console.log(childData);
-      });
-  });
+
 }
