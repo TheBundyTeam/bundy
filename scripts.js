@@ -98,12 +98,13 @@ $(document).ready(function () {
 
 // Read Database
 
-function readData(){
-  var leadsRef = firebase.database().ref('users');
-  leadsRef.on('value', function(snapshot) {
+function readData(user){
+  var userData = firebase.database().ref('users/' + user.uid);
+  userData.on('value', function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var childData = childSnapshot.val();
-        console.log(childData)
+        console.log(childData);
+        console.log(childData);
       });
   });
 }
