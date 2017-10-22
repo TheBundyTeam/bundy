@@ -191,15 +191,31 @@ function log(mode) {
   var num = document.getElementById("section-number").value;
   var monthi = document.getElementById("dashboard-month");
   monthi = monthi.options[monthi.selectedIndex].value;
-
+  console.log(monthi);
+  console.log(month);
+  var valueTo;
   if (mode) {
-    data[monthi].sub[head].actual += num;
+    valueTo = Number(data[monthi].sub[head].actual) + Number(num);
+    data[monthi].sub[head].actual = valueTo;
+    console.log(data[monthi].sub[head]);
+    //String(valueTo);
+    console.log(valueTo);
   } else {
-    data[monthi].sub[head].actual -= num;
+    valueTo = Number(data[monthi].sub[head].actual) - Number(num);
+    data[monthi].sub[head].actual = valueTo;
+    //String(valueTo);
+    console.log(valueTo);
   }
-
-  var userId = firebase.auth().currentUser.uId;
-
-  firebase.database().ref('users/' + userId).update({month: data});
+  var userString = firebase.auth().currentUser.uid;
+  console.log(month);
+  var monthString = monthi.toString();
+  var headString = head.toString()
+  console.log(monthString);
+  console.log(headString);
+  var dbqueryString = "/users" +"/" + userString + "/month/" + monthString +"/sub/" + headString;
+  console.log(dbqueryString);
+  firebase.database().ref(dbqueryString).update({
+    actual: valueTo
+  });
   buildPage(monthi);
 }
