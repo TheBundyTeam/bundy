@@ -288,12 +288,8 @@ function saveBudgetCategory() {
   var exp = document.getElementById("in-num").value;
   var act = document.getElementById("in-curr").value;
   var tog = !(document.getElementById("in-flex").checked);
-
-
   var userString = firebase.auth().currentUser.uid;
   var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/" + head;
-  console.log(dbqueryString);
-
   firebase.database().ref(dbqueryString).update({
     actual: act,
     expected: exp,
@@ -309,14 +305,15 @@ function deleteBudgetCategory() {
   var exp = document.getElementById("in-num").value;
   var act = document.getElementById("in-curr").value;
   var tog = !(document.getElementById("in-flex").checked);
-
-
   var userString = firebase.auth().currentUser.uid;
   var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/";
-  console.log(dbqueryString);
-
-  firebase.database().ref(dbqueryString).child(head).remove();
-  location.reload();
+  if (head) {
+    firebase.database().ref(dbqueryString).child(head).remove();
+    Materialize.toast("Your budget category has been remove", 4000);
+    location.reload();
+  } else {
+    Materialize.toast("Please choose a budget category first to remove it", 4000);
+  }
 }
 
 function createBudgetCategory() {
@@ -333,8 +330,8 @@ function createBudgetCategory() {
       fixed: false
     });
     Materialize.toast("Your budget category has been added", 4000);
+    location.reload();
   } else {
-    Materialize.toast("Your budget update has failed", 4000);
+    Materialize.toast("Your budget update has failed, please enter a name for your budget category", 4000);
   }
-  location.reload();
 }
