@@ -1,9 +1,9 @@
 <html>
 <head>
 
-  <title>Bundy | Dashboard</title>
+  <title>Bundy | Edit Budget</title>
   <meta charset="utf-8">
-  <link rel="icon" type="img/ico" href="img/favicon.ico">
+  <link rel="icon" type="img/ico" href="img/bundy.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -17,12 +17,15 @@
   <div class="navbar-fixed">
     <nav class="green accent-4" style="padding: 0 28px;">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Bundy</a>
+        <a href="#" class="brand-logo center">
+          <img class="brand-logo center" src="img/bundy.ico" style="max-height: auto; max-width: 56; padding: 5;">
+        </a>
+        <a href="#" class="brand-logo left hide-on-med-and-down" style="font-weight: bold;">Bundy</a>
         <a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="index.html">Home</a></li>
           <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="editdashboard.html">Edit Budget</a></li>
+          <li><a href="edit-budget.html">Edit Budget</a></li>
           <li><a href="index.html#contact">Contact</a></li>
           <li><a href="javascript:logoutBundy();">Sign Out</a></li>
         </ul>
@@ -32,7 +35,7 @@
   <ul class="side-nav" id="mobile-sidenav">
     <div class="card-panel green darken-1" style="padding-left: 20px; margin: 0;">
       <li><h4 class="white-text">Bundy</h4></li>
-      <li><h6 class="white-text" style="line-height: 0;">Your Smart Budgeting Tool</h6></li>
+      <li><h6 class="white-text" style="line-height: 0;">Your Smart Budgeting Companion</h6></li>
     </div>
     <li><a href="index.html">Home</a></li>
     <li><a href="dashboard.html">Dashboard</a></li>
@@ -60,12 +63,12 @@
   <section class="container">
     <div class="row">
       <div class="col s12 m6 l5">
-        <h4>All Budget Groups</h4>
+        <h4>Your Budget Categories:</h4>
         <div class="row">
           <div class="col s12 m10 offset-m1">
             <div id="in-list" class="collection">
             </div>
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add more</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Create New Category</a>
           </div>
         </div>
       </div>
@@ -130,7 +133,7 @@
     <div class="container" style="padding: 0 6px;">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Fundy</h5>
+          <h5 class="white-text">Bundy</h5>
           <h6 class="grey-text text-lighten-4">The smart budgeting system that works with you to improve your budgeting skills.<br>Brought to you by 4 sleep deprived university students.</h6>
         </div>
         <div class="col l3 offset-l1 s12">
@@ -147,7 +150,7 @@
     <div class="green darken-1 footer-copyright">
       <div class="container">
       © TheBundyTeam 2017
-      <a class="grey-text text-lighten-4 right" href="http://thacks.tech/">THacks II</a>
+      <a class="grey-text text-lighten-4 right" href="http://thacks.tech/">Initially Designed @ THacks II</a>
       </div>
     </div>
   </footer>
@@ -175,7 +178,7 @@
       });
 
     } else {
-      alert("No User Found, Redirecting to home");
+      Materialize.toast("No User Found, Redirecting to Home", 4000);
       location.replace("index.html");
     }
   });

@@ -13,7 +13,7 @@ firebase.initializeApp({
 var data;
 var a;
 
-// Function to Clear
+// Function to Clear Fields
 function clearFields() {
   document.getElementById("email").value = "";
   document.getElementById("password").value = "";
@@ -290,13 +290,18 @@ function saveBudgetCategory() {
   var tog = !(document.getElementById("in-flex").checked);
   var userString = firebase.auth().currentUser.uid;
   var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/" + head;
-  firebase.database().ref(dbqueryString).update({
-    actual: act,
-    expected: exp,
-    fixed: tog.toString()
-  });
-  Materialize.toast("Budget has been updated.", 4000);
-  readData();
+
+  if (head){
+    firebase.database().ref(dbqueryString).update({
+      actual: act,
+      expected: exp,
+      fixed: tog.toString()
+    });
+    Materialize.toast(("Your budget category \"" + head + "\" has been updated."), 4000);
+  } else {
+    Materialize.toast(("Please select a budget category first to save"), 4000);
+  }
+  //readData();
 }
 
 function deleteBudgetCategory() {
