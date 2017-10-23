@@ -50,7 +50,7 @@
         <select id="dashboard-month" onChange="buildPage(this.value);">
           <option value="" disabled>Choose your Month</option>
         </select>
-        <label>Materialize Select</label>
+        <label>Select Month</label>
       </div>
     </div>
     <div class="green accent-4 divider" style="height: 2px; margin-top: 0;"></div>
@@ -129,9 +129,11 @@
 <script>
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      readData(loadDash);
+      $(document).ready(function () {
+        readData(loadDash);
+      });
     } else {
-      alert("No User Found, Redirecting to home");
+      Materialize.toast("No User Found, Redirecting to home", 4000);
       location.replace("index.html");
     }
   });

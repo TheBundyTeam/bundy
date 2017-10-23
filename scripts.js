@@ -33,21 +33,23 @@ function signupBundy() {
     $('#modal1').modal('close');
     // clear the fields
     clearFields();
+    var frame = {}
+    for (i=1; i<= 12; i++) {
+      frame[i] = {
+        total: 0,
+        sub: {
+          rent: {
+            fixed: true,
+            expected: 0,
+            actual: 0
+          }
+        }
+      };
+    }
     // use user.uid to add user data to database
     firebase.database().ref('users/' + user.uid).set({
       email: email,
-      month: {
-        10: {
-          total: 0,
-          sub: {
-            rent: {
-              fixed: true,
-              expected: 0,
-              actual: 0
-            }
-          }
-        }
-      }
+      month: frame
     }).then(function() {
       location.replace("dashboard.html");
     });
@@ -151,18 +153,25 @@ function buildPage(month) {
   var percent = function (a, e) {
     a = Number(a);
     e = Number(e);
+    if (e === 0) {
+      if (a === 0) {
+        return 0;
+      } else {
+        return 100;
+      }
+    }
     var num = Math.abs(a / e) * 100;
     return (num <= 100)? num : 100;
   };
 
   var totalActual = 0;
-  var totalExpect = 0;
+  var totalExpect = Number(data[month].total);
   var j = 0;
 
   content.innerHTML = "";
 
   for (i in data[month].sub) {
-    var item = data[month].sub[i]
+    var item = data[month].sub[i];
     totalActual += Number(item.actual);
     totalExpect += Number(item.expected);
 
@@ -175,7 +184,7 @@ function buildPage(month) {
     j++;
   }
 
-  totalH.innerHTML = "Budget | $" + totalActual + "/ $" + data[month].total;
+  totalH.innerHTML = "Budget | $" + totalActual + "/ $" + totalExpect;
   totalD.innerHTML = "<div class='" + color(totalActual) + " accent-4' style='width: " + percent(totalActual, totalExpect) + "%;'></div>"
 
 }
@@ -317,11 +326,15 @@ function createBudgetCategory() {
 
   var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/" + head;
 
-  firebase.database().ref(dbqueryString).set({
-    actual: 0,
-    expected: 0,
-    fixed: false
-  });
-  Materialize.toast("Your budget category has been added", 4000);
+  if (head) {
+    firebase.database().ref(dbqueryString).set({
+      actual: 0,
+      expected: 0,
+      fixed: false
+    });
+    Materialize.toast("Your budget category has been added", 4000);
+  } else {
+    Materialize.toast("Your budget update has failed", 4000);
+  }
   location.reload();
 }
