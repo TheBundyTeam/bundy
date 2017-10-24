@@ -38,7 +38,22 @@ function signupBundy() {
       frame[i] = {
         total: 0,
         sub: {
-          rent: {
+          "samplesub": {
+            fixed: true,
+            expected: 0,
+            actual: 0
+          },
+          "Get Started by": {
+            fixed: true,
+            expected: 0,
+            actual: 0
+          },
+          "going to Edit Budget": {
+            fixed: true,
+            expected: 0,
+            actual: 0
+          },
+          "and adding your own": {
             fixed: true,
             expected: 0,
             actual: 0
@@ -177,14 +192,14 @@ function buildPage(month) {
 
 
     var str = "<div class='col s12 m12 l6'><h5>" +
-              i + " | $" + Number(item.actual) + " / $" + Number(item.expected) +
+              i + " | $" + Number(item.actual) + " / $" + Number(item.expected) + " Remaining" +
               "</h5><div class='bar z-depth-1'><div id='d-" + j + "'" +
               " class='amount " + color(item.actual) + " accent-4' style='width: " + percent(item.actual, item.expected) + "%;'></div></div><a class='waves-effect waves-light btn teal lighten-1 modal-trigger' href='#modal1' onclick='update(\"" + i + "\");'>Update</a></div>";
     content.innerHTML += str;
     j++;
   }
 
-  totalH.innerHTML = "Budget | $" + totalActual + "/ $" + totalExpect;
+  totalH.innerHTML = "Overall Budget | $" + totalActual + " / $" + totalExpect + " Remaining";
   totalD.innerHTML = "<div class='" + color(totalActual) + " accent-4' style='width: " + percent(totalActual, totalExpect) + "%;'></div>"
 
 }
@@ -301,7 +316,7 @@ function saveBudgetCategory() {
   } else {
     Materialize.toast(("Please select a budget category first to save"), 4000);
   }
-  //readData();
+  readData();
 }
 
 function deleteBudgetCategory() {
@@ -314,21 +329,30 @@ function deleteBudgetCategory() {
   var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/";
   if (head) {
     firebase.database().ref(dbqueryString).child(head).remove();
-    Materialize.toast("Your budget category has been remove", 4000);
+    Materialize.toast("Your budget category has been removed", 4000);
     location.reload();
   } else {
     Materialize.toast("Please choose a budget category first to remove it", 4000);
   }
 }
 
-function createBudgetCategory() {
+function createBudgetCategory(data) {
   var head = document.getElementById("in-new").value;
   var month = document.getElementById("dashboard-month").value;
   var userString = firebase.auth().currentUser.uid;
+  var dbqueryString = "/users" + "/" + userString + "/month/" + month.toString() + "/sub/" + head;
+  var headNonexistent = false;
+  var errorMessage = "";
 
-  var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/" + head;
-
-  if (head) {
+  if (!(data[month].sub[head])) {
+    headNonexistent = true;
+  } else {
+    errorMessage = "The budget category \'" + head + "\' already exists. Please choose another name";
+  }
+  if (!head) {
+    errorMessage = "You cannot have an empty name, please enter a name for your budget category"
+  }
+  if ((head) && (headNonexistent)) {
     firebase.database().ref(dbqueryString).set({
       actual: 0,
       expected: 0,
@@ -337,6 +361,6 @@ function createBudgetCategory() {
     Materialize.toast("Your budget category has been added", 4000);
     location.reload();
   } else {
-    Materialize.toast("Your budget update has failed, please enter a name for your budget category", 4000);
+    Materialize.toast(errorMessage, 4000);
   }
 }
