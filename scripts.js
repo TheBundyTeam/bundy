@@ -38,22 +38,12 @@ function signupBundy() {
       frame[i] = {
         total: 0,
         sub: {
-          "samplesub": {
+          "Get Started by going to Edit Budget": {
             fixed: true,
             expected: 0,
             actual: 0
           },
-          "Get Started by": {
-            fixed: true,
-            expected: 0,
-            actual: 0
-          },
-          "going to Edit Budget": {
-            fixed: true,
-            expected: 0,
-            actual: 0
-          },
-          "and adding your own": {
+          "deleting these sample categories and adding your own": {
             fixed: true,
             expected: 0,
             actual: 0
@@ -66,6 +56,7 @@ function signupBundy() {
       email: email,
       month: frame
     }).then(function() {
+      // Redirect user who is now signed up to dashboard
       location.replace("dashboard.html");
     });
     console.log("UID:", user.uid);
