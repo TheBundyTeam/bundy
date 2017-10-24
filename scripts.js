@@ -185,7 +185,7 @@ function buildPage(month) {
     var str = "<div class='col s12 m12 l6'><h5>" +
               i + " | $" + Number(item.actual) + " / $" + Number(item.expected) + " Remaining" +
               "</h5><div class='bar z-depth-1'><div id='d-" + j + "'" +
-              " class='amount " + color(item.actual) + " accent-4' style='width: " + percent(item.actual, item.expected) + "%;'></div></div><a class='waves-effect waves-light btn teal lighten-1 modal-trigger' href='#modal1' onclick='update(\"" + i + "\");'>Update</a></div>";
+              " class='amount " + color(item.actual) + " accent-4' style='width: " + percent(item.actual, item.expected) + "%;'></div></div><a class='waves-effect waves-light btn teal lighten-1 modal-trigger' href='#modal1' onclick='update(\"" + i + "\");'>Update Amount</a></div>";
     content.innerHTML += str;
     j++;
   }
@@ -196,14 +196,13 @@ function buildPage(month) {
 }
 
 function update(section) {
-  console.log(section);
   var head = document.getElementById("section-name");
   var num = document.getElementById("section-amount");
   var month = document.getElementById("dashboard-month");
   month = month.options[month.selectedIndex].value;
-
-  head.innerHTML = section;
-  num.innerHTML = data[month].sub[section].actual + " / " + data[month].sub[section].expected;
+  var titleMessage = section;
+  head.innerHTML = titleMessage;
+  num.innerHTML = "Current Amount: $"+ data[month].sub[section].actual + " / $" + data[month].sub[section].expected + " Remaining";
 
 }
 
@@ -296,10 +295,10 @@ function saveBudgetCategory() {
   var tog = !(document.getElementById("in-flex").checked);
   var userString = firebase.auth().currentUser.uid;
   var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/" + head;
-
+  var difference = Number(exp) - Number(act);
   if (head){
     firebase.database().ref(dbqueryString).update({
-      actual: act,
+      actual: difference,
       expected: exp,
       fixed: tog.toString()
     });
@@ -334,8 +333,7 @@ function createBudgetCategory(data) {
   var dbqueryString = "/users" + "/" + userString + "/month/" + month.toString() + "/sub/" + head;
   var headNonexistent = false;
   var errorMessage = "";
-
-  if (!(data[month].sub[head])) {
+  if ((data[month].sub[head]) == null) {
     headNonexistent = true;
   } else {
     errorMessage = "The budget category \'" + head + "\' already exists. Please choose another name";
