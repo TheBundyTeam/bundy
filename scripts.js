@@ -353,3 +353,14 @@ function createBudgetCategory(data) {
     Materialize.toast(errorMessage, 4000);
   }
 }
+
+// Function Return key clicks signin
+function enterToSignin() {
+  document.getElementById("password")
+      .addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+          document.getElementById("sign-in").click();
+      }
+  });
+}

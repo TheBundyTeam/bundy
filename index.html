@@ -179,8 +179,8 @@
 
     <!-- Modal Footer -->
     <div class="modal-footer">
-      <a href="javascript:signupBundy();" class="modal-action waves-effect waves-green btn-flat">Sign Up</a>
-      <a href="javascript:signinBundy();" class="modal-action waves-effect waves-green btn-flat">Sign In</a>
+      <a id="sign-up" href="javascript:signupBundy();" class="modal-action waves-effect waves-green btn-flat">Sign Up</a>
+      <a id="sign-in" href="javascript:signinBundy();" class="modal-action waves-effect waves-green btn-flat">Sign In</a>
     </div>
   </div>
 
@@ -202,6 +202,7 @@
       location.replace("dashboard.html");
     }
   }
+  enterToSignin();
 </script>
 
 </html>
