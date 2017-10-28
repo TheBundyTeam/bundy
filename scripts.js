@@ -333,14 +333,25 @@ function createBudgetCategory(data) {
   var dbqueryString = "/users" + "/" + userString + "/month/" + month.toString() + "/sub/" + head;
   var headNonexistent = false;
   var errorMessage = "";
-  if ((data[month].sub[head]) == null) {
+  var subExists = true;
+
+  try {
+    subExists = (data[month].sub[head] == null);
+  } catch (e) {
+    subExists = false;
     headNonexistent = true;
+  }
+
+  if (subExists){
+    headNonexistent = (data[month].sub[head] == null);
   } else {
     errorMessage = "The budget category \'" + head + "\' already exists. Please choose another name";
   }
+
   if (!head) {
     errorMessage = "You cannot have an empty name, please enter a name for your budget category"
   }
+
   if ((head) && (headNonexistent)) {
     firebase.database().ref(dbqueryString).set({
       actual: 0,
