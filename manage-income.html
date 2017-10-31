@@ -1,7 +1,7 @@
 <html>
 <head>
 
-  <title>Bundy | Edit Budget</title>
+  <title>Bundy | Manage Income</title>
   <meta charset="utf-8">
   <link rel="icon" type="img/ico" href="img/bundy.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -21,14 +21,20 @@
           <img class="brand-logo center" src="img/bundy.ico" style="max-height: auto; max-width: 56; padding: 5;">
         </a>
         <a href="#" class="brand-logo left hide-on-med-and-down" style="font-weight: bold;">Bundy</a>
-        <a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="material-icons left">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="index.html">Home</a></li>
           <li><a href="dashboard.html">Dashboard</a></li>
           <li><a href="edit-budget.html">Edit Budget</a></li>
           <li><a href="#">Manage Income</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="javascript:logoutBundy();">Sign Out</a></li>
+
+          <!-- Dropdown for Account Options - Trigger -->
+          <li>
+            <a class="dropdown-button" data-belowOrigin="true" data-activates="side-account-dropdown">Account
+              <i class="material-icons right">account_circle</i>
+            </a>
+          </li>
+
         </ul>
       </div>
     </nav>
@@ -42,8 +48,7 @@
     <li><a href="dashboard.html">Dashboard</a></li>
     <li><a href="edit-budget.html">Edit Budget</a></li>
     <li><a href="#">Manage Income</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-    <li><a href="javascript:logoutBundy();">Sign Out</a></li>
+    <li><a class="dropdown-button" href="#!" data-belowOrigin="true" data-activates="account-dropdown">Account Options<i class="material-icons right">arrow_drop_down</i></a></li>
   </ul>
 
   <div class="section container">
@@ -124,6 +129,19 @@
                 <a href="javascript:createBudgetCategory(data);" class="modal-action modal-close waves-effect waves-green btn-flat">Create</a>
               </div>
             </div>
+
+            <!-- Account Dropdown Structure -->
+            <ul id='account-dropdown' class='dropdown-content'>
+              <li><a href="#!">Settings</a></li>
+              <li><a href="javascript:logoutBundy();">Sign Out</a></li>
+            </ul>
+
+            <!-- sideNav Account Dropdown Structure -->
+            <ul id='side-account-dropdown' class='dropdown-content'>
+              <li><a href="#!">Settings</a></li>
+              <li><a href="javascript:logoutBundy();">Sign Out</a></li>
+            </ul>
+
         </div>
 
       </div>

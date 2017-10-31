@@ -27,8 +27,12 @@
           <li><a href="dashboard.html">Dashboard</a></li>
           <li><a href="#">Edit Budget</a></li>
           <li><a href="manage-income.html">Manage Income</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="javascript:logoutBundy();">Sign Out</a></li>
+          <!-- Dropdown for Account Options - Trigger -->
+          <li>
+            <a class="dropdown-button" data-belowOrigin="true" data-activates="side-account-dropdown">Account
+              <i class="material-icons right">account_circle</i>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -42,8 +46,7 @@
     <li><a href="dashboard.html">Dashboard</a></li>
     <li><a href="#">Edit Budget</a></li>
     <li><a href="manage-income.html">Manage Income</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-    <li><a href="javascript:logoutBundy();">Sign Out</a></li>
+    <li><a class="dropdown-button" href="#!" data-belowOrigin="true" data-activates="account-dropdown">Account Options<i class="material-icons right">arrow_drop_down</i></a></li>
   </ul>
 
   <div class="section container">
@@ -124,6 +127,19 @@
                 <a href="javascript:createBudgetCategory(data);" class="modal-action modal-close waves-effect waves-green btn-flat">Create</a>
               </div>
             </div>
+
+            <!-- Account Dropdown Structure -->
+            <ul id='account-dropdown' class='dropdown-content'>
+              <li><a href="#!">Settings</a></li>
+              <li><a href="javascript:logoutBundy();">Sign Out</a></li>
+            </ul>
+
+            <!-- sideNav Account Dropdown Structure -->
+            <ul id='side-account-dropdown' class='dropdown-content'>
+              <li><a href="#!">Settings</a></li>
+              <li><a href="javascript:logoutBundy();">Sign Out</a></li>
+            </ul>
+            
         </div>
 
       </div>

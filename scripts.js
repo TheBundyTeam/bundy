@@ -115,6 +115,7 @@ $(document).ready(function () {
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
   $('.scrollspy').scrollSpy({"scrollOffset": 70});
+  
 });
 
 // Read Database
@@ -365,7 +366,7 @@ function createBudgetCategory(data) {
   }
 }
 
-// Function Return key clicks signin
+// Press <Return> to Sign-in
 function enterToSignin() {
   document.getElementById("password")
       .addEventListener("keyup", function(event) {
