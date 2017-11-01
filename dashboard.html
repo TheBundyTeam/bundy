@@ -113,7 +113,7 @@
       <div class="row" style="margin-top: 0;">
         <div class="col s9">
           <div class="input-field">
-            <input id="section-number" type="number" class="validate">
+            <input id="section-number" type="number" min="0" class="validate">
             <label for="section-number">Amount</label>
           </div>
           <h6>Did you make a Payment or receive a Refund for this category?<h6/>
@@ -155,7 +155,7 @@
         readData(loadDash);
       });
     } else {
-      Materialize.toast("No User Found, Redirecting to home", 4000);
+      Materialize.toast("Not Logged In, Redirecting to home", 4000);
       location.replace("index.html");
     }
   });

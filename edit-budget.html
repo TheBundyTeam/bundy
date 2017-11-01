@@ -117,14 +117,14 @@
                   <div class="row">
                     <div class="input-field col s12 m8">
                       <input id="in-new" type="text" class="validate">
-                      <label for="in-new">Name</label>
+                      <label for="in-new">Category Name</label>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
                 <div class="divider"></div>
-                <a href="javascript:createBudgetCategory(data);" class="modal-action modal-close waves-effect waves-green btn-flat">Create</a>
+                <a id="createcategory-button" href="javascript:createBudgetCategory(data);" class="modal-action modal-close waves-effect waves-green btn-flat">Create</a>
               </div>
             </div>
 
@@ -139,7 +139,7 @@
               <li><a href="#!">Settings</a></li>
               <li><a href="javascript:logoutBundy();">Sign Out</a></li>
             </ul>
-            
+
         </div>
 
       </div>
@@ -195,10 +195,12 @@
       });
 
     } else {
-      Materialize.toast("No User Found, Redirecting to Home", 4000);
+      Materialize.toast("Not Logged In, Redirecting to Home", 4000);
       location.replace("index.html");
     }
   });
+  // Press Enter to createBudgetCategory();
+  enterToPress("in-new","createcategory-button");
 </script>
 
 </html>

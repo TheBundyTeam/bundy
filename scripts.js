@@ -36,6 +36,16 @@ function signupBundy() {
     var frame = {}
     for (i=1; i<= 12; i++) {
       frame[i] = {
+        income: {
+          "Software Developer at Ice Cream Truck": {
+            amount: 0,
+            numPayments: 0
+          },
+          "Meme Maker": {
+            amount: 0,
+            numPayments: 0
+          }
+        },
         total: 0,
         sub: {
           "Get Started by going to Edit Budget": {
@@ -90,6 +100,10 @@ function signinBundy() {
     }).catch(function(error) {
       // Stores the error message in variable errorMessage
       var errorMessage = error.message;
+      // Development Message (Remove in Production) *****
+      if ((error.code) === ('auth/user-not-found')){
+        errorMessage = "Developing/Testing, I nuked users/data. Please recreate your account if testing"
+      }
       // Display the errorMessage to the user to correct their error
       Materialize.toast(errorMessage, 4000);
     }
@@ -115,7 +129,7 @@ $(document).ready(function () {
   $(".modal").modal();
   $('.tooltipped').tooltip({delay: 50});
   $('.scrollspy').scrollSpy({"scrollOffset": 70});
-  
+
 });
 
 // Read Database
@@ -212,28 +226,40 @@ function log(mode) {
   var num = document.getElementById("section-number").value;
   var monthi = document.getElementById("dashboard-month");
   monthi = monthi.options[monthi.selectedIndex].value;
+  var numFormatted = Number(num);
+  var errorMessage = "";
+  var valueTo = Number(data[monthi].sub[head].actual);
+  if (numFormatted > 0) {
+    if (mode) {
+      valueTo += numFormatted;
+      valueTo = valueTo.toFixed(2);
+      data[monthi].sub[head].actual = valueTo;
 
-  var valueTo;
-  if (mode) {
-    valueTo = Number(data[monthi].sub[head].actual) + Number(num);
-    data[monthi].sub[head].actual = valueTo;
+    } else {
+      valueTo -= numFormatted;
+      valueTo = valueTo.toFixed(2);
+      data[monthi].sub[head].actual = valueTo;
+    }
+    var userString = firebase.auth().currentUser.uid;
+    var monthString = monthi.toString();
+    var headString = head.toString()
 
+    var dbqueryString = "/users" +"/" + userString + "/month/" + monthString +"/sub/" + headString;
+    firebase.database().ref(dbqueryString).update({
+      actual: valueTo
+    });
+    // Clear the amount
+    document.getElementById("section-number").value = "";
+    buildPage(monthi);
   } else {
-    valueTo = Number(data[monthi].sub[head].actual) - Number(num);
-    data[monthi].sub[head].actual = valueTo;
-
+    if (numFormatted === 0) {
+      errorMessage = "Please enter a valid amount that is not 0";
+    }
+    if (numFormatted < 0) {
+      errorMessage = "Your amount cannot be negative in value"
+    }
+    Materialize.toast(errorMessage, 4000);
   }
-  var userString = firebase.auth().currentUser.uid;
-
-  var monthString = monthi.toString();
-  var headString = head.toString()
-
-  var dbqueryString = "/users" +"/" + userString + "/month/" + monthString +"/sub/" + headString;
-
-  firebase.database().ref(dbqueryString).update({
-    actual: valueTo
-  });
-  buildPage(monthi);
 }
 
 function loadEdit() {
@@ -298,6 +324,8 @@ function saveBudgetCategory() {
   var dbqueryString = "/users" +"/" + userString + "/month/" + month.toString() +"/sub/" + head;
   var difference = Number(exp) - Number(act);
   if (head){
+    difference = difference.toFixed(2);
+    exp = Number(exp).toFixed(2);
     firebase.database().ref(dbqueryString).update({
       actual: difference,
       expected: exp,
@@ -335,7 +363,6 @@ function createBudgetCategory(data) {
   var headNonexistent = false;
   var errorMessage = "";
   var subExists = true;
-
   try {
     subExists = (data[month].sub[head] == null);
   } catch (e) {
@@ -366,13 +393,13 @@ function createBudgetCategory(data) {
   }
 }
 
-// Press <Return> to Sign-in
-function enterToSignin() {
-  document.getElementById("password")
+// Press <Return> to press button
+function enterToPress(field, button){
+  document.getElementById(field)
       .addEventListener("keyup", function(event) {
       event.preventDefault();
       if (event.keyCode === 13) {
-          document.getElementById("sign-in").click();
+          document.getElementById(button).click();
       }
   });
 }
